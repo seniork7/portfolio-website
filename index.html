@@ -28,13 +28,7 @@
       </a>
 
       <!-- Hamburger menu button -->
-      <div
-        class="hamburger-menu"
-        aria-label="Open navigation"
-        aria-expanded="false"
-        aria-controls="nav-menu-sm"
-        tabindex="0"
-      >
+      <div class="hamburger-menu">
         <div class="menu-line"></div>
         <div class="menu-line"></div>
         <div class="menu-line"></div>
@@ -46,24 +40,22 @@
       <nav>
         <ul class="nav-list nav-list-sm">
           <li class="nav-item">
-            <a href="index.html" class="nav-link">Home</a>
+            <a href="index.html" class="nav-link"><i class="nav-icon" data-lucide="home" title="Home"></i></a>
           </li>
           <li class="nav-item">
-            <a href="#about" class="nav-link">Who's Kevon?</a>
+            <a href="#about" class="nav-link"><i class="nav-icon" data-lucide="user" title="About"></i></a>
           </li>
           <li class="nav-item">
-            <a href="#skills" class="nav-link">What I do?</a>
+            <a href="#skills" class="nav-link"><i class="nav-icon" data-lucide="briefcase" title="Skills"></i></a>
           </li>
           <li class="nav-item">
-            <a href="#projects" class="nav-link">Projects</a>
+            <a href="#projects" class="nav-link"><i class="nav-icon" data-lucide="folder" title="Projects"></i></a>
           </li>
           <li class="nav-item">
-            <a href="#contact" class="nav-link get-in-touch">Get in Touch</a>
+            <a href="#contact" class="nav-link get-in-touch"><i class="nav-icon" data-lucide="mail" title="Contact"></i></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" target="_blank"
-              >Resume <span> <i class="fa-solid fa-up-right-from-square fa-xs"></i></span></a
-            >
+            <a class="nav-link" href="#" target="_blank"><i class="nav-icon" data-lucide="file-text" title="Resume"></i></a>
           </li>
         </ul>
 
@@ -78,13 +70,13 @@
             <!-- Tagline -->
             <p class="tagline">
               Web Developer & <br />
-              Designer
+              Digital Experience Designer
             </p>
           </div>
 
           <!-- Social Icons -->
           <div
-            class="social-icons animate__animated animate__rubberBand animate__slower animate__infinite"
+            class="social-icons"
           >
             <!-- GitHub Link -->
             <a
@@ -106,38 +98,29 @@
         <!-- Nav Links -->
         <ul class="nav-list nav-list-lg">
           <li class="nav-item">
-            <a href="index.html" class="nav-link">Home</a>
+            <a href="index.html" class="nav-link" title="Home"><i class="nav-icon" data-lucide="home"></i></a>
           </li>
           <li class="nav-item">
-            <a href="#about" class="nav-link">Who's Kevon?</a>
+            <a href="#about" class="nav-link" title="About"><i class="nav-icon" data-lucide="user"></i></a>
           </li>
           <li class="nav-item">
-            <a href="#skills" class="nav-link">What I do?</a>
+            <a href="#skills" class="nav-link" title="Skills"><i class="nav-icon" data-lucide="briefcase"></i></a>
           </li>
           <li class="nav-item">
-            <a href="#projects" class="nav-link">Projects</a>
+            <a href="#projects" class="nav-link" title="Projects"><i class="nav-icon" data-lucide="folder"></i></a>
           </li>
           <li class="nav-item">
-            <a href="#contact" class="nav-link get-in-touch">Get in Touch</a>
+            <a href="#contact" class="nav-link get-in-touch" title="Contact"><i class="nav-icon" data-lucide="mail"></i></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" target="_blank"
-              >Resume<span> <i class="fa-solid fa-up-right-from-square fa-xs"></i></span></a
-            >
+            <a class="nav-link" href="#" target="_blank" title="Resume"><i class="nav-icon" data-lucide="file-text"></i></a>
           </li>
         </ul>
-
-        <footer class="footer-lg">
-          <p>&copy; 2025 Kevon Senior | 📍 Ottawa, ON</p>
-        </footer>
       </nav>
 
       <div class="main-content">
         <!-- Header Image -->
-        <div
-          id="header-img"
-          class="section animate__animated animate__slideInRight"
-        ></div>
+        <div id="header-img" class="section animate__animated animate__slideInRight"></div>
 
         <!---------------------------- About Section ------------------------------>
         <section
@@ -151,12 +134,16 @@
             <p class="about-text">
               Hey! I'm Kevon <span class="last-name">Senior</span>, a Web
               Developer and Designer with a passion for creating beautiful and
-              functional websites.
+              functional websites and digital experiences.
+            </p>
+
+            <p class="about-text">
+              "I'm not just a web developer but someone who brings design, dev, and future minded thinking."
             </p>
 
             <p class="about-text">
               When I'm not coding, you can find me exploring new technologies,
-              reading about design trends, or enjoying a good cup of coffee.
+              reading about design trends, or enjoying a good cup of tea.
             </p>
 
             <p class="about-text">
@@ -166,7 +153,7 @@
             </p>
           </div>
 
-          <img src="img/kevonsenior.gif" alt="Kevon Senior" />
+          <img src="img/kevonsenior.gif" alt="Kevon Senior" width="300"/>
         </section>
 
         <!---------------------------- What I Do ------------------------------>
@@ -174,7 +161,7 @@
           id="skills"
           class="section container animate__animated animate__slideInLeft"
         >
-          <h5>What I do</h5>
+          <h5>What I do?</h5>
           <h2 class="phrase">
             "Mix creativity with code to make websites
             <span class="last-name">WOW</span>!"
@@ -186,7 +173,7 @@
               <lord-icon
                 src="https://cdn.lordicon.com/gvtjlyjf.json"
                 trigger="hover"
-                colors="primary:#fff,secondary:#FF7F50"
+                colors="primary:#d1d5db,secondary:#9C4A57"
                 style="width: 70px; height: 70px"
               >
               </lord-icon>
@@ -199,7 +186,7 @@
               <lord-icon
                 src="https://cdn.lordicon.com/qhgmphtg.json"
                 trigger="hover"
-                colors="primary:#fff,secondary:#FF7F50"
+                colors="primary:#d1d5db,secondary:#9C4A57"
                 style="width: 70px; height: 70px"
               >
               </lord-icon>
@@ -212,13 +199,13 @@
               <lord-icon
                 src="https://cdn.lordicon.com/eaegfqtv.json"
                 trigger="hover"
-                colors="primary:#fff,secondary:#FF7F50"
+                colors="primary:#d1d5db,secondary:#9C4A57"
                 style="width: 70px; height: 70px"
               >
               </lord-icon>
               <h5>Branding</h5>
               <p>
-                Designing unique brand visuals that represents their identity.
+                Creating unique brand visuals that reflect their identity.
               </p>
             </div>
           </div>
@@ -228,27 +215,14 @@
           <div id="tools">
             <i class="fa-brands fa-html5 fa-2x tool-icon" title="HTML5"></i>
             <i class="fa-brands fa-css fa-2x tool-icon" title="CSS"></i>
-            <i
-              class="fa-brands fa-square-js fa-2x tool-icon"
-              title="JavaScript"
-            ></i>
+            <i class="fa-brands fa-square-js fa-2x tool-icon" title="JavaScript"></i>
             <i class="fa-brands fa-react fa-2x tool-icon" title="React"></i>
             <i class="fa-brands fa-php fa-2x tool-icon" title="PHP"></i>
-            <i
-              class="fa-brands fa-wordpress fa-2x tool-icon"
-              title="WordPress"
-            ></i>
-            <i
-              class="fa-brands fa-bootstrap fa-2x tool-icon"
-              title="Bootstrap"
-            ></i>
-            <img
-              src="img/Tailwind_CSS_Logo.svg"
-              class="tailwindcss-logo tool-icon"
-              alt="Tailwind CSS Logo"
-              title="Tailwind CSS"
-            />
             <i class="fa-brands fa-square-git fa-2x tool-icon" title="Git"></i>
+            <i class="fa-brands fa-wordpress fa-2x tool-icon" title="WordPress"></i>
+            <i class="fa-brands fa-bootstrap fa-2x tool-icon" title="Bootstrap"></i>
+            <img src="img/tailwind.svg" class="tailwindcss-logo tool-icon" alt="Tailwind CSS Logo" title="Tailwind CSS"/>
+            <i class="fa-brands fa-sass fa-2x tool-icon" title="Sass"></i>
           </div>
         </section>
 
@@ -266,7 +240,7 @@
           <div class="projects-container">
             <!-- Project 1 -->
             <div class="project-card">
-              <div>
+              <div class="project-links">
                 <a
                   href="https://seniork7.github.io/myPortfolio/"
                   class="project-link"
@@ -287,14 +261,13 @@
 
               <h3>Portfolio Website</h3>
               <p>
-                Clean and responsive portfolio website that showcases my work
-                and personality.
+                Clean and responsive portfolio website that showcases my work.
               </p>
             </div>
 
             <!-- Project 2 -->
             <div class="project-card">
-              <div>
+              <div class="project-links">
                 <a
                   href="https://seniork7.github.io/my-coffee-house/"
                   class="project-link"
@@ -325,7 +298,7 @@
 
             <!-- Project 3 -->
             <div class="project-card">
-              <div>
+              <div class="project-links">
                 <a
                   href="https://seniork7.github.io/to-do-list-app/"
                   class="project-link"
@@ -353,7 +326,7 @@
 
             <!-- Project 4 -->
             <div class="project-card">
-              <div>
+              <div class="project-links">
                 <a
                   href="chrome-extension://oemmndcbldboiebfnladdacbdfmadadm/file:///Users/kevonsenior/Desktop/Design%20Foundation/final-project/PDF/Frosted-Dough-Brand-Guidelines.pdf"
                   class="project-link"
@@ -374,8 +347,7 @@
 
               <h3>Frosted Dough Branding</h3>
               <p>
-                Branding project for a bakery, including logo design and brand
-                guidelines.
+                Bakery branding project with logo design and brand guidelines.
               </p>
             </div>
           </div>
@@ -394,8 +366,8 @@
 
           <div class="contact-options">
             <div class="contact-card">
-              <a id="email" href="mailto:kevasenior@gmail.com"
-                ><i class="fa-solid fa-paper-plane"></i
+              <a href="mailto:kevasenior@gmail.com"
+                ><i class="fa-solid fa-paper-plane email"></i
                 ><br />kevasenior@gmail.com</a
               >
             </div>
@@ -409,6 +381,7 @@
     </footer>
 
     <script src="https://cdn.lordicon.com/lordicon.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
     <script src="script.js"></script>
   </body>
 </html>
