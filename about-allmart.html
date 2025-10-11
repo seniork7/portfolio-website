@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kevon Senior — Web Developer | Front-end Developer | Ottawa</title>
+    <meta name="description" content="Kevon Senior — Web Developer | Front-end Developer | Ottawa. I build accessible, responsive sites with technologies. See projects, case studies, and hire me.">
+    <link rel="canonical" href="https://seniork7.github.io/portfolio-website/">
+    <meta property="og:title" content="Kevon Senior — Web Developer | Front-end Developer | Ottawa">
+    <meta property="og:description" content="Accessible, responsive websites built with modern web technologies. Based in Ottawa.">
+    <meta property="og:url" content="https://seniork7.github.io/portfolio-website/">
+    <meta property="og:image" content="https://seniork7.github.io/portfolio-website/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+<body class="bg-dark text-light font-sans leading-relaxed">
+    <header class="project-header">
+        <div class="header-content">
+            <h1 class="project-title">AllMart</h1>
+            <p class="project-subtitle">Full-Stack web application demo where the frontend fetches product data from a custom built API.</p>
+        </div>
+        <div class="header-image">
+            <img src="img/allmart_about.png" alt="AllMart Project Header Image" />
+        </div>
+    </header>
+
+    <main class="project-main">
+        <!-- Project Overview -->
+        <section class="project-section">
+            <h2 class="section-title">Project Overview</h2>
+            <p class="section-text">
+                AllMart is a full-stack application developed to simulate a grocery store API. It combines a <code>Node.js</code> backend with a responsive frontend to provide features like product search, category filtering, and voice search for accessibility.
+            </p>
+        </section>
+
+        <!-- Goal -->
+        <section class="project-section">
+            <h2 class="section-title">Goal</h2>
+            <div class="section-text">
+                <p>While exploring grocery store websites, I noticed a lack of voice search functionality, which could improve accessibility for users. The goal was to create a user-friendly API and frontend that not only supports traditional search and filtering but also integrates voice search using the browser built-in Web Speech API.</p>
+            </div>
+        </section>
+
+        <!-- Process -->
+        <section class="project-section">
+            <h2 class="section-title">Process</h2>
+            <div class="section-text">
+                <p>AllMart comprises of:</p>
+                <ol class="section-list">
+                    <li>AllMart Groceries - The front-end</li>
+                    <li>AllMart Groceries API - The backend</li>
+                </ol>
+                <br>
+                <p>I developed the backend from scratch using <code>Node.js</code> and <code>Express</code> to create different endpoints for the API to serve product data to the frontend. The front-end includes features like dynamic product search, voice search, and wishlist management using local storage.</p>
+                <br>
+                <p>Throughout the development process, I encountered a few challenges:</p>
+                <br>
+                <ol class="section-list">
+                    <li>
+                        <strong>Challenge:</strong> Handling errors during API calls and ensuring the application remains responsive.
+                        <br>
+                        <strong>Solution:</strong> I implemented a <code>try...catch</code> block in the fetch logic to handle network issues and display user-friendly error messages.
+                    </li>
+                    <li>
+                        <strong>Challenge:</strong> Filtering products dynamically based on user input.
+                        <br>
+                        <strong>Solution:</strong> I used JavaScript array methods like <code>filter()</code> to efficiently process and display the data based on user input.
+                    </li>
+                    <li>
+                        <strong>Challenge:</strong> Integrating voice search functionality.
+                        <br>
+                        <strong>Solution:</strong> I utilized the Web Speech API to capture and process voice input, ensuring compatibility across browsers. If the browser does not support the Web Speech API, a message is displayed to inform the user. A key feature that aids in accessibility.
+                    </li>
+                    <li>
+                        <strong>Challenge:</strong> Setting the backend server and building the API endpoints for product filtering.
+                        <br>
+                        <strong>Solution:</strong> I built a REST API using Node.js and Express. I implemented dynamic endpoints like <code>/api/products?category=fruit</code> using query parameters <code>{category, name, id}</code> to filter data. For example, I used <code>filter()</code> method to return only products that match the user’s request. This allows the client to request exactly what it needs without overfetching data.
+                    </li>
+                    <!-- <li>
+                        <strong>Challenge:</strong> Integrating voice search functionality.
+                        <br>
+                        <strong>Solution:</strong> I utilized the Web Speech API to capture and process voice input, ensuring compatibility across browsers. If the browser does not support the Web Speech API, a message is displayed to inform the user. A key feature that aids in accessibility.
+                    </li> -->
+                </ol>
+                <br>
+                <p>I hosted the API using <a class="render-link" href="https://render.com/">Render</a> to make it publicly accessible and used <code>cors</code> middleware to handle cross-origin requests from the front-end.</p>
+            </div>
+        </section>
+
+        <!-- Tech Stack -->
+        <section class="project-section">
+            <h2 class="section-title">Tech Stack</h2>
+            <div class="tech-stack">
+                <div class="tech-item">
+                    <i class="fa-brands fa-node-js fa-2x"></i>
+                    <p>Node.js</p>
+                </div>
+                <div class="tech-item">
+                    <i class="fa-brands fa-html5 fa-2x"></i>
+                    <p>HTML5</p>
+                </div>
+                <div class="tech-item">
+                    <img src="img/tailwind2.svg" class="tailwindcss-about" alt="Tailwind CSS Logo" title="Tailwind CSS"/>
+                    <p>TailwindCSS</p>
+                </div>
+                <div class="tech-item">
+                    <i class="fa-brands fa-js-square fa-2x"></i>
+                    <p>JavaScript</p>
+                </div>
+                <div class="tech-item">
+                    <i class="fa-brands fa-github fa-2x"></i>
+                    <p>GitHub</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Features -->
+        <section class="project-section">
+            <h2 class="section-title">Key Features</h2>
+            <ol class="section-list">
+                <li>Search products by name, category, or ID</li>
+                <li>Voice search using the Web Speech API</li>
+                <li>Dynamic product rendering with error handling</li>
+                <li>Wishlist functionality with local storage</li>
+            </ol>
+        </section>
+
+        <!-- What I Learned -->
+        <section class="project-section">
+            <h2 class="section-title">What I Learned</h2>
+            <p>This project taught me:</p>
+            <ol class="section-list">
+                <li>How to build a REST API using Node.js and Express</li>
+                <li>Build and connect a frontend with a backend</li>
+                <li>How to manage real world API issues like errors and async logic</li>
+                <li>Testing and debugging APIs effectively using Postman and Axios</li>
+                <li>How to implement voice search for improved accessibility</li>
+                <li>How to deploy a backend server using Render</li>
+                <li>How to use CORS middleware for handling cross-origin requests</li>
+            </ol>
+        </section>
+
+        <!-- Links -->
+        <section class="project-section">
+            <h2 class="section-title">Links</h2>
+            <ul class="section-list">
+                <li><a href="https://github.com/seniork7/api-project" class="project-link" target="_blank">GitHub Repository</a></li>
+                <li><a href="https://seniork7.github.io/api-project/" class="project-link" target="_blank">Live Demo</a></li>
+            </ul>
+        </section>
+
+        <!-- Back Link -->
+        <span class="back-link"><a href="index.html" class="project-link"><i class="fa-solid fa-arrow-left"></i> Back to Portfolio</a></span>
+    </main>
+
+    <footer class="project-footer">
+        <p>&copy; 2025 Kevon Senior | AllMart</p>
+    </footer>
+</body>
+</html>

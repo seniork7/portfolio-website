@@ -33,7 +33,7 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
 }
-ol, ul {
+ul {
 	list-style: none;
 }
 blockquote, q {
@@ -124,7 +124,7 @@ p {
   left: 0; 
   width: 100vw;
   display: flex; 
-  justify-content: space-between; 
+  justify-content: end; 
   align-items: center;
   padding: 1rem 2rem;
   background: #0f172a;
@@ -298,6 +298,10 @@ nav {
   width: 40px; 
 }
 
+.tailwindcss-about { 
+  width: 45px; 
+}
+
 #tools {
   display: flex; 
   flex-wrap: wrap; 
@@ -333,17 +337,11 @@ nav {
 }
 
 .project-card img {
-  width: 70%; 
+  width: 90%; 
   transition: all 0.3s ease; 
   cursor: pointer; 
+  border-radius: 10px;
   border: 3px solid #d1d5db;
-}
-
-.project-links a{
-  font-size: 1.5rem; 
-  padding: 1rem 1rem 1rem 0; 
-  color: #d1d5db;
-  transition: all 0.3s ease;
 }
 
 .project-card p {  
@@ -397,6 +395,136 @@ nav {
 
 .footer-lg { 
   display: none; 
+}
+
+/* Styles for about-pokehub.html */
+
+/* Header */
+.project-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: #0f172a;
+    color: #d1d5db;
+    padding: 2rem 1rem;
+}
+
+.project-header .header-content {
+    margin-bottom: 1.5rem;
+}
+
+.project-header .project-title {
+    font-family: "Fraunces", serif;
+    font-size: 2.5rem;
+    margin: 1rem 0;
+    color: #14b8a6;
+}
+
+.project-header .project-subtitle {
+    font-size: 1.2rem;
+    width: 75%;
+    margin: 0 auto;
+}
+
+.project-header .header-image img {
+    width: 100%;
+    max-width: 800px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Main Content */
+.project-main {
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.project-section {
+    margin-bottom: 2rem;
+}
+
+.section-title {
+    font-family: "Fraunces", serif;
+    font-size: 1.75rem;
+    color: #9C4A57;
+    margin-bottom: 1rem;
+}
+
+.section-text {
+    font-size: 1rem;
+    color: #d1d5db;
+    line-height: 1.25;
+}
+
+.section-list {
+    padding: 0;
+    margin: 1rem 0;
+}
+
+.section-list li {
+    font-size: 1rem;
+    color: #d1d5db;
+    margin-bottom: 0.5rem;
+}
+
+.project-link {
+    color: #14b8a6;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+/* Tech Stack */
+.tech-stack {
+    display: flex;
+    justify-content: start;
+    align-items: end;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.tech-item {
+    text-align: center;
+    color: #d1d5db;
+}
+
+.tech-item p {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+}
+
+/* Footer */
+.project-footer {
+    text-align: center;
+    padding: 1rem;
+    background: #0f172a;
+    color: #d1d5db;
+    font-size: 0.9rem;
+}
+
+code {
+    background: #334155;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-family: "Courier New", Courier, monospace;
+}
+
+strong {
+    color: #9C4A57;
+}
+
+.back-link {
+    display: block;
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.render-link {
+    color: #d1d5db;
+    transition: color 0.3s ease;
 }
 
 /* Tablet Styles */
@@ -639,11 +767,14 @@ nav {
     align-items: center; 
     justify-content: center;
     padding: 0;
-    /* background: url(img/circle-scatter.svg); */
-    /* background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1000' height='560' preserveAspectRatio='none' viewBox='0 0 1000 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1040%26quot%3b)' fill='none'%3e%3cpath d='M712.12 546.26 a186 186 0 1 0 372 0 a186 186 0 1 0 -372 0z' fill='rgba(61%2c 127%2c 127%2c 0.5)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M127.15 441.33 a137.03 137.03 0 1 0 274.06 0 a137.03 137.03 0 1 0 -274.06 0z' fill='rgba(61%2c 127%2c 127%2c 0.5)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M756.3 145.3 a159.97 159.97 0 1 0 319.94 0 a159.97 159.97 0 1 0 -319.94 0z' fill='rgba(61%2c 127%2c 127%2c 0.5)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M647.67 298.23 a121.95 121.95 0 1 0 243.9 0 a121.95 121.95 0 1 0 -243.9 0z' fill='rgba(61%2c 127%2c 127%2c 0.5)' class='triangle-float2'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1040'%3e%3crect width='1000' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3cstyle%3e %40keyframes float1 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-10px%2c 0)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float1 %7b animation: float1 5s infinite%3b %7d %40keyframes float2 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-5px%2c -5px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float2 %7b animation: float2 4s infinite%3b %7d %40keyframes float3 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(0%2c -10px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float3 %7b animation: float3 6s infinite%3b %7d %3c/style%3e%3c/defs%3e%3c/svg%3e");*/
-    /* background-size: cover;
-    background-position: top;
-    background-repeat: no-repeat;  */
+  }
+
+  code {
+    background: #0f172a;
+  }
+
+  .render-link:hover {
+    color: #14b8a6;
   }
 
   .footer-sm { 

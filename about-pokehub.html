@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kevon Senior — Web Developer | Front-end Developer | Ottawa</title>
+    <meta name="description" content="Kevon Senior — Web Developer | Front-end Developer | Ottawa. I build accessible, responsive sites with technologies. See projects, case studies, and hire me.">
+    <link rel="canonical" href="https://seniork7.github.io/portfolio-website/">
+    <meta property="og:title" content="Kevon Senior — Web Developer | Front-end Developer | Ottawa">
+    <meta property="og:description" content="Accessible, responsive websites built with modern web technologies. Based in Ottawa.">
+    <meta property="og:url" content="https://seniork7.github.io/portfolio-website/">
+    <meta property="og:image" content="https://seniork7.github.io/portfolio-website/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+<body class="bg-dark text-light font-sans leading-relaxed">
+    <header class="project-header">
+        <div class="header-content">
+            <h1 class="project-title">PokéHub</h1>
+            <p class="project-subtitle">Front-end web application where users can sign up, log in and manage their Pokémon troop.</p>
+        </div>
+        <div class="header-image">
+            <img src="img/pokehub_front_page.png" alt="PokéHub Project Header Image" />
+        </div>
+    </header>
+
+    <main class="project-main">
+        <!-- Project Overview -->
+        <section class="project-section">
+            <h2 class="section-title">Project Overview</h2>
+            <p class="section-text">
+                PokéHub is a web application that allows users to sign up, log in, and manage their Pokémon collection. Users can interact with PokéHub by catching their favorite Pokémon from the dashboard and view their collection on the Pokéland page. The app integrates with the PokéAPI to fetch real-time Pokémon data and provides an interactive experience for users.
+            </p>
+            <br>
+            <p class="section-text">
+                This project was given as a capstone project as part of my Interactive Media Design program at Algonquin College. The main objectives were to practice working with APIs, enhance my JavaScript skills, and create a user-friendly interface.
+            </p>
+        </section>
+
+        <!-- Goal -->
+        <section class="project-section">
+            <h2 class="section-title">Goal</h2>
+            <div class="section-text">
+                <p>To create a user-friendly web app that allows users to explore, catch, and manage Pokémon while learning to integrate APIs and improve my JavaScript skills.</p>
+            </div>
+        </section>
+
+        <!-- Process -->
+        <section class="project-section">
+            <h2 class="section-title">Process</h2>
+            <div class="section-text">
+                <p>I developed PokéHub with three main sections:</p>
+                <ol class="section-list">
+                    <li>Login: Allow users to sign up and log in to their accounts.</li>
+                    <li>Dashboard: Fetches Pokémon data from the PokéAPI, allowing users to catch and load new Pokémon.</li>
+                    <li>Pokéland: Displays caught Pokémon and allows users to train, battle, view stats or release them.</li>
+                </ol>
+
+                <p>The project was built using HTML, TailwindCSS, and JavaScript. I utilized the Fetch API to retrieve data from the PokéAPI and implemented local storage to manage user sessions and Pokémon data. The UI focused on a clean and intuitive interface, ensuring a seamless user experience across different devices.</p>
+                <br>
+                <p>Throughout the development process, I encountered a few challenges:</p>
+                <br>
+                <ol>
+                    <li>
+                        <strong>Challenge:</strong> Handling asynchronous API calls
+                        <br>
+                        <strong>Solution:</strong> This was my first time working with APIs, so I had to learn how to properly use <code>fetch()</code> and handle promises using <code>async/await</code>. I also implemented error handling to manage failed requests.
+                    </li>
+                    <li>
+                        <strong>Challenge:</strong> I noticed when the sign up link was clicked, the HTML generated onto the page then quickly disappeared.
+                        <br>
+                        <strong>Solution:</strong> By using <code>preventDefault()</code>, I was able to stop the form from resorting to its natural behavior.
+                    </li>
+                    <li>
+                        <strong>Challenge:</strong> Duplicate Pokémon being added to <code>pokeArray</code> when the user clicked "Catch" multiple times.
+                        <br>
+                        <strong>Solution:</strong> I used <code>some()</code> method to check if a Pokémon was already caught before adding it to the collection.
+                    </li>
+                    <li>
+                        <strong>Challenge:</strong> Event listeners not being triggered as expected.
+                        <br>
+                        <strong>Solution:</strong> Used event delegation by attaching listeners to parent containers (e.g., cardsContainer and pokeDisplay) and identifying the clicked element using event.target.closest().
+                    </li>
+                    <li>
+                        <strong>Challenge:</strong> The carousel did not update dynamically after releasing a Pokémon.
+                        <br>
+                        <strong>Solution:</strong> This was a sore point for me because even though I tried calling <code>createCarouselCard()</code> to recreate the cards it still wasn't working. So I ennded up clearing the container first then call <code>createCarouselCard()</code> to recreate the cards and use <code>window.location.reload()</code> to refresh the page and show the updated carousel cards.
+                    </li>
+                </ol>
+                <br>
+                <p>Overall, PokéHub was a valuable learning experience that enhanced my skills in web development and API integration. I look forward to applying the knowledge and skills gained from this project to future endeavors.</p>
+            </div>
+        </section>
+
+        <!-- Tech Stack -->
+        <section class="project-section">
+            <h2 class="section-title">Tech Stack</h2>
+            <div class="tech-stack">
+                <div class="tech-item">
+                    <i class="fa-brands fa-html5 fa-2x"></i>
+                    <p>HTML5</p>
+                </div>
+                <div class="tech-item">
+                    <i class="fa-brands fa-css3-alt fa-2x"></i>
+                    <p>CSS3</p>
+                </div>
+                <div class="tech-item">
+                    <i class="fa-brands fa-js-square fa-2x"></i>
+                    <p>JavaScript</p>
+                </div>
+                <div class="tech-item">
+                    <img src="img/tailwind2.svg" class="tailwindcss-about" alt="Tailwind CSS Logo" title="Tailwind CSS"/>
+                    <p>TailwindCSS</p>
+                </div>
+                <div class="tech-item">
+                    <i class="fa-brands fa-github fa-2x"></i>
+                    <p>GitHub</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Features -->
+        <section class="project-section">
+            <h2 class="section-title">Key Features</h2>
+            <ol class="section-list">
+                <li>User authentication with sign-up and login functionality.</li>
+                <li>Dasboard page to explore and catch Pokémon using the PokéAPI.</li>
+                <li>Pokéland page to manage caught Pokémon, view stats, and release them.</li>
+                <li>Responsive design for seamless use on desktop and mobile devices.</li>
+                <li>Local storage to persist user and Pokémon data.</li>
+            </ol>
+        </section>
+
+        <!-- What I Learned -->
+        <section class="project-section">
+            <h2 class="section-title">What I Learned</h2>
+            <p class="section-text">
+                This project taught me valuable lessons, including:
+            </p>
+            <ol class="section-list">
+                <li>How to effectively fetch and handle data from an API</li>
+                <li>Implementing user authentication</li>
+                <li>Data persistence using local storage</li>
+                <li>Building a responsive UI with Tailwind CSS</li>
+                <li>Additional array methods for data manipulation</li>
+                <li>Event delegation for efficient event handling</li>
+                <li>Debugging and problem solving skills</li>
+            </ol>
+        </section>
+
+        <!-- Links -->
+        <section class="project-section">
+            <h2 class="section-title">Links</h2>
+            <ul class="section-list">
+                <li><a href="https://github.com/seniork7/pokehub" class="project-link" target="_blank">GitHub Repository</a></li>
+                <li><a href="https://seniork7.github.io/pokehub/" class="project-link" target="_blank">Live Demo</a></li>
+            </ul>
+        </section>
+
+        <!-- Back Link -->
+        <span class="back-link"><a href="index.html" class="project-link"><i class="fa-solid fa-arrow-left"></i> Back to Portfolio</a></span>
+    </main>
+
+    <footer class="project-footer">
+        <p>&copy; 2025 Kevon Senior | PokéHub</p>
+    </footer>
+</body>
+</html>
