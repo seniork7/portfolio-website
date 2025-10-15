@@ -21,15 +21,15 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css" />
   </head>
-<body class="bg-dark text-light font-sans leading-relaxed">
+<body class="">
     <header class="project-header">
         <div class="header-content">
             <h1 class="project-title">AllMart</h1>
             <p class="project-subtitle">Full-Stack web application demo where the frontend fetches product data from a custom built API.</p>
         </div>
-        <div class="header-image">
-            <img src="img/allmart_about.png" alt="AllMart Project Header Image" />
-        </div>
+
+        <!-- AllMart website demo -->
+        <iframe src="https://www.youtube-nocookie.com/embed/CNSlpsemssg?si=0Aez7X_tDnWZ_pfH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </header>
 
     <main class="project-main">
@@ -84,14 +84,10 @@
                         <br>
                         <strong>Solution:</strong> I built a REST API using Node.js and Express. I implemented dynamic endpoints like <code>/api/products?category=fruit</code> using query parameters <code>{category, name, id}</code> to filter data. For example, I used <code>filter()</code> method to return only products that match the user’s request. This allows the client to request exactly what it needs without overfetching data.
                     </li>
-                    <!-- <li>
-                        <strong>Challenge:</strong> Integrating voice search functionality.
-                        <br>
-                        <strong>Solution:</strong> I utilized the Web Speech API to capture and process voice input, ensuring compatibility across browsers. If the browser does not support the Web Speech API, a message is displayed to inform the user. A key feature that aids in accessibility.
-                    </li> -->
+
                 </ol>
                 <br>
-                <p>I hosted the API using <a class="render-link" href="https://render.com/">Render</a> to make it publicly accessible and used <code>cors</code> middleware to handle cross-origin requests from the front-end.</p>
+                <p>I hosted the API using <a class="render-link" href="https://render.com/" target="_blank" rel="noopener noreferrer">Render</a> to make it publicly accessible and used <code>cors</code> middleware to handle cross-origin requests from the front-end.</p>
             </div>
         </section>
 
@@ -152,13 +148,12 @@
         <section class="project-section">
             <h2 class="section-title">Links</h2>
             <ul class="section-list">
-                <li><a href="https://github.com/seniork7/api-project" class="project-link" target="_blank">GitHub Repository</a></li>
-                <li><a href="https://seniork7.github.io/api-project/" class="project-link" target="_blank">Live Demo</a></li>
+                <li><a href="https://github.com/seniork7/api-project" target="_blank">GitHub Repository</a></li>
             </ul>
         </section>
 
         <!-- Back Link -->
-        <span class="back-link"><a href="index.html" class="project-link"><i class="fa-solid fa-arrow-left"></i> Back to Portfolio</a></span>
+        <span class="back-link"><a href="index.html#projects"><i class="fa-solid fa-arrow-left"></i> Back to Projects</a></span>
     </main>
 
     <footer class="project-footer">
