@@ -57,9 +57,5 @@ setInterval(() => {
 document.querySelector("#you").textContent = icons[i++ % icons.length];
 }, 1500);
 
-// projCardImg.map(card => card.addEventListener("mouseover", (e) => {
-
-// })
-
-
-    lucide.createIcons();
+// Initialize Lucide icons
+lucide.createIcons();
