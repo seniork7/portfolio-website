@@ -440,11 +440,14 @@ nav {
 }
 
 .project-card p {
-  padding: 0.5rem 1rem 1rem 1rem;
+  padding: 0.5rem 1rem;
 }
 
 .project-card a {
   text-decoration: none;
+  color: #14b8a6;
+  padding-bottom: 0.5rem;
+  transition: all 0.4s ease-in-out;
 }
 
 .more-projects {
@@ -852,8 +855,12 @@ iframe {
   }
 
   .project-link a:hover {
-    color: #3D7F7F;
     transform: scale(1.05);
+  }
+
+  .project-card a:hover {
+    transform: scale(1.05);
+    text-decoration: underline;
   }
 
   .more-projects {
