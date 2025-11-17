@@ -3,7 +3,6 @@ const hamburgerMenuBtn = document.querySelector('.hamburger-menu');
 const navMenu = document.querySelector('.nav-list-sm');
 const toolIcons = document.querySelectorAll('.tool-icon');
 const projCard = document.querySelectorAll('.project-card');
-const icons = ["you", "👩‍💻", "🎧", "👨‍🎨", "🧠", "👨🏼‍💼", "👋🏼", "🚀",];
 
 // Set a default state for the menu
 let menuOpen = false;
@@ -50,12 +49,6 @@ function addAnimation() {
 
 // Trigger the pulse effect at random intervals
 setInterval(addAnimation, 2000);
-
-// Loop through the icons in the #you element
-let i = 0;
-setInterval(() => {
-document.querySelector("#you").textContent = icons[i++ % icons.length];
-}, 1500);
 
 // Initialize Lucide icons
 lucide.createIcons();
