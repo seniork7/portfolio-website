@@ -603,9 +603,25 @@ iframe {
   transition: transform 0.2s, filter 0.2s;
 }
 
-.form-status {
+.thank-you .submit-btn {
+  max-width: 20rem;
+  margin-top: 1rem;
+  text-decoration: none;
+}
+
+/* .form-status {
   font-size: 0.875rem;
   color: #14b8a6;
+} */
+
+.form-status.error {
+  color: #9C4A57;
+  font-size: 1rem;
+}
+
+.form-status.success {
+  color: #14b8a6;
+  font-size: 1rem;
 }
 
 .icon-bar {
@@ -1175,5 +1191,53 @@ iframe {
 }
 
 @media screen and (min-width: 1280px) {
+    html {
+    font-size: 18px;
+  }
 
+  nav {
+    width: 20vw;
+  }
+
+  h1 {
+    font-size: ;
+  }
+
+  h2 {
+    font-size: 1.50rem;
+    max-width: 100%;
+  }
+
+  h3 {
+    font-size: 1.30rem;
+  }
+
+  #about h2 {
+    max-width: 100%;
+  }
+
+  .about-text {
+    max-width: 40rem;
+  }
+
+  .card {
+    width: 17rem;
+  }
+
+  #main-text h2 {
+    font-size: 1.45rem;
+  }
+
+  .project-card {
+    width: 15rem;
+    padding: 1rem 0.5rem 2rem 0.5rem;
+  }
+
+  .project-card img {
+    width: 100%;
+  }
+
+  .project-link a {
+    font-size: 1.6rem;
+  }
 }

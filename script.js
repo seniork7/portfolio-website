@@ -12,12 +12,10 @@ hamburgerMenuBtn.addEventListener('click', () => {
     if (!menuOpen) {
         hamburgerMenuBtn.classList.add('close');
         navMenu.classList.add('open');
-        // set state for menu
         menuOpen = true;
     } else {
         hamburgerMenuBtn.classList.remove('close');
         navMenu.classList.remove('open');
-        // set state for menu
         menuOpen = false;
     }
 });
@@ -52,3 +50,65 @@ setInterval(addAnimation, 2000);
 
 // Initialize Lucide icons
 lucide.createIcons();
+
+
+// Form Authentication
+const contactForm = document.getElementById('contactForm');
+const formStatus = document.querySelector('.form-status');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', async function(event) {
+        event.preventDefault();
+
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const message = document.getElementById('message').value.trim();
+        let errors = [];
+
+        formStatus.textContent = '';
+        formStatus.classList.remove('error');
+        formStatus.classList.remove('success');
+
+        if (name === '') {
+            errors.push('Full Name is required.');
+        }
+
+        if (email === '') {
+            errors.push('Email Address is required.');
+        } else if (!/^\S+@\S+\.\S+$/.test(email)) {
+            errors.push('Please enter a valid email address.');
+        }
+
+        if (message === '') {
+            errors.push('Message is required.');
+        }
+
+        if (errors.length > 0) {
+            formStatus.classList.add('error');
+            formStatus.innerHTML = errors.join('<br>');
+        } else {
+            const formData = new FormData(contactForm);
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    formStatus.classList.remove('error');
+                    formStatus.classList.add('success');
+                    formStatus.textContent = 'Your message has been sent successfully!';
+                    contactForm.reset();
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            } catch (error) {
+                formStatus.classList.add('error');
+                formStatus.textContent = 'There was a problem submitting your message. Please try again later!';
+            }
+        }
+    });
+}

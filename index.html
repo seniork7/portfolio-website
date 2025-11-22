@@ -122,7 +122,7 @@
         </h1>
         <div class="hero-links">
           <a href="#projects" class="" title="Projects"><i class="nav-icon" data-lucide="folder"></i> Projects</a>
-          <a href="#projects" class="" title="Projects"><i class="nav-icon" data-lucide="mail"></i>Get in touch</a>
+          <a href="#contact" class="" title="Projects"><i class="nav-icon" data-lucide="mail"></i>Get in touch</a>
         </div>
       </section>
 
@@ -327,9 +327,10 @@
             </div>
           
                 <!-- Form -->
-            <form class="contact-form animate__animated animate__fadeInRight" id="contactForm">
+            <form action="https://formspree.io/f/xblwwpoy" method="POST" target="_blank" class="contact-form animate__animated animate__fadeInRight" id="contactForm" novalidate>
               <h2>Get in Touch</h2>
               <p>Feel free to reach out to discuss roles, collaborations, or questions about my work.</p>
+              <p class="form-status"></p>
               <div class="form-group">
                 <label for="name">Full Name*</label>
                 <input type="text" id="name" name="name" required>
@@ -343,7 +344,7 @@
                 <textarea id="message" name="message" rows="5" required></textarea>
               </div>
               <button type="submit" class="submit-btn">Send</button>
-              <p class="form-status"></p>
+              <input type="hidden" name="_next" value="form-submit.html">
             </form>
           </div>
         </div>
