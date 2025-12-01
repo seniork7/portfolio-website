@@ -1,8 +1,27 @@
-
 const hamburgerMenuBtn = document.querySelector('.hamburger-menu');
 const navMenu = document.querySelector('.nav-list-sm');
 const toolIcons = document.querySelectorAll('.tool-icon');
 const projCard = document.querySelectorAll('.project-card');
+const themeToggleLG = document.getElementById('theme-toggle-lg');
+const html = document.documentElement;
+const darkToggleBtn = document.querySelector('.dark-toggle-lg');
+const lightToggleBtn = document.querySelector('.light-toggle-lg');
+const themeToggleSM = document.getElementById('theme-toggle-sm');
+const darkToggleSM = document.querySelector('.dark-toggle-sm');
+const lightToggleSM = document.querySelector('.light-toggle-sm');
+const lordIcons = document.querySelectorAll('lord-icon');
+
+// Set site theme based on localStorage
+localStorage.getItem('theme') === 'dark' ? html.classList.add('dark') : html.classList.remove('dark');
+
+// Set icon theme based on localStorage
+lordIcons.forEach(icon => {
+    if (localStorage.getItem('theme') === 'dark') {
+        icon.setAttribute('colors', 'primary:#F5F5F5,secondary:#df5a4e');
+    } else {
+        icon.setAttribute('colors', 'primary:#0F172A,secondary:#FF5349');
+    }
+});
 
 // Set a default state for the menu
 let menuOpen = false;
@@ -47,10 +66,6 @@ function addAnimation() {
 
 // Trigger the pulse effect at random intervals
 setInterval(addAnimation, 2000);
-
-// Initialize Lucide icons
-lucide.createIcons();
-
 
 // Form Authentication
 const contactForm = document.getElementById('contactForm');
@@ -112,3 +127,56 @@ if (contactForm) {
         }
     });
 }
+
+// Theme Toggle
+function handleThemeToggle(e, mode) {
+    const { darkToggle, lightToggle } = mode;
+    if (e.target.closest('.dark-toggle-lg, .dark-toggle-sm')) {
+        html.classList.add('dark');
+        if (lightToggle) {
+            lightToggle.classList.remove('theme-mode');
+        }
+        if (darkToggle) {
+            darkToggle.classList.add('theme-mode');
+        }
+    }
+    if (e.target.closest('.light-toggle-lg, .light-toggle-sm')) {
+        html.classList.remove('dark');
+        if (lightToggle) {
+            lightToggle.classList.add('theme-mode');
+        }
+        if (darkToggle) {
+            darkToggle.classList.remove('theme-mode');
+        }
+    }
+    localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : '');
+    lordIcons.forEach(icon => {
+        if (html.classList.contains('dark')) {
+            icon.setAttribute('colors', 'primary:#F5F5F5,secondary:#df5a4e');
+        } else {
+            icon.setAttribute('colors', 'primary:#0F172A,secondary:#FF5349');
+        }
+    });
+}
+
+// Theme toggle for large screens
+themeToggleLG.addEventListener('click', (e) => {
+    handleThemeToggle(e, {
+        darkToggle: darkToggleBtn,
+        lightToggle: lightToggleBtn
+    });
+});
+
+// Theme toggle for small screens
+if (themeToggleSM) {
+    themeToggleSM.addEventListener('click', (e) => {
+        handleThemeToggle(e, {
+            darkToggle: darkToggleSM,
+            lightToggle: lightToggleSM
+        });
+    });
+}
+
+// Initialize Lucide icons
+lucide.createIcons();
+

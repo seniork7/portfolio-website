@@ -11,12 +11,13 @@ Before diving into development, I outlined the structure of the website to ensur
 - **About Me**: A brief introduction to who I am and my philosophy as a developer and designer.
 - **Skills**: A showcase of my technical expertise and tools I use.
 - **Projects**: A portfolio of my best work, with links to full website and GitHub repositories.
+- **Blog**: A space where I share honest reflections about my journey into web development.
 - **Contact**: A simple and accessible way for visitors to get in touch with me.
 
 ### 2. **Design Choices**
 The design of the website is inspired by modern web design principles:
 - **Typography**: I used the "Inter" font for clean, readable text and "Fraunces" for headings to add a touch of elegance and creativity.
-- **Color Palette**: A dark, professional theme with accents of teal and muted pink to create a vibrant yet sophisticated look.
+- **Color Palette**: A dark, professional theme with accents of teal and orange red to create a vibrant yet sophisticated look.
 - **Animations**: Subtle animations (fade-ins, hover effects and gradient) were added to enhance interactivity without overwhelming the user.
 - **Responsiveness**: The site is fully responsive, ensuring a seamless experience across devices, from desktops to mobile phones.
 
@@ -52,7 +53,7 @@ The development process involved writing clean to ensure maintainability and sca
 - Projects are displayed with a clean, consistent layout to emphasize their content.
 
 ### **4. Contact Section**
-- A simple and accessible contact section with a direct email link.
+- A simple and accessible contact section with a function form.
 
 ---
 
@@ -61,13 +62,6 @@ I believe that a portfolio should not only showcase technical skills but also re
 - **Professional**: Clean layouts, consistent typography, and a cohesive color scheme.
 - **Engaging**: Subtle animations and interactive elements to keep users interested.
 - **Accessible**: Fully responsive and optimized for all devices.
-
----
-
-## Future Improvements
-- **Blog Section**: Add a blog to share insights, tutorials, and experiences.
-- **Dark/Light Mode**: Implement a toggle for users to switch between themes.
-- **Performance Optimization**: Further optimize images and animations for faster load times.
 
 ---
 

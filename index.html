@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kevon Senior — Web Developer | Front-end Developer | Ottawa</title>
-  <meta name="description" content="Kevon Senior — Web Developer | Front-end Developer | Ottawa. I build accessible, responsive sites with React and Tailwind. See projects, case studies, and hire me." />
+  <meta name="description" content="Kevon Senior — Web Developer | Front-end Developer | Ottawa. I build responsive sites with React and Tailwind. See projects, case studies, and hire me." />
   <link rel="canonical" href="https://seniork7.github.io/portfolio-website/" />
   <meta property="og:title" content="Kevon Senior — Web Developer | Front-end Developer | Ottawa" />
   <meta property="og:description" content="Accessible, responsive websites built with modern front-end tooling. Based in Ottawa." />
@@ -13,6 +13,9 @@
 
   <!-- Font awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" /> -->
+
 
   <!-- Animate.css -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
@@ -56,6 +59,12 @@
         <li class="nav-item">
           <a class="nav-link" href="./Resume.pdf" target="_blank" aria-label="Resume" title="Resume"><i class="nav-icon" data-lucide="file-text"></i></a>
         </li>
+        <!-- <li class="nav-item">
+          <a href="#what-others-say" class="nav-link" title="What others say"><i class="nav-icon" data-lucide="user-star"></i></a>
+        </li> -->
+        <li class="nav-item">
+          <a href="#thoughts" class="nav-link" title="Kev's Thoughts"><i class="nav-icon" data-lucide="scroll-text"></i></a>
+        </li>
       </ul>
 
       <!-- Headshot Image -->
@@ -90,13 +99,21 @@
         </div>
       </div>
 
+      <!-- Theme Toggle for Mobile -->
+      <div id="toggle-container-sm">
+        <div id="theme-toggle-sm">
+          <i class="light-toggle-sm theme-mode" data-lucide="sun"></i>
+          <i class="dark-toggle-sm" data-lucide="moon"></i>
+        </div>
+      </div>
+
       <!-- Nav Links -->
       <ul class="nav-list nav-list-lg">
         <li class="nav-item">
           <a href="index.html" class="nav-link" title="Home"><i class="nav-icon" data-lucide="home"></i></a>
         </li>
         <li class="nav-item">
-          <a href="#about" class="nav-link" title="About"><i class="nav-icon" data-lucide="user"></i></a>
+          <a href="#about" class="nav-link" title="Who am I"><i class="nav-icon" data-lucide="user"></i></a>
         </li>
         <li class="nav-item">
           <a href="#skills" class="nav-link" title="Skills"><i class="nav-icon" data-lucide="briefcase"></i></a>
@@ -110,14 +127,27 @@
         <li class="nav-item">
           <a class="nav-link" href="./Resume.pdf" target="_blank" title="Resume"><i class="nav-icon" data-lucide="file-text"></i></a>
         </li>
+        <!-- <li class="nav-item">
+          <a href="#what-others-say" class="nav-link" title="What others say"><i class="nav-icon" data-lucide="user-star"></i></a>
+        </li> -->
+        <li class="nav-item">
+          <a href="#thoughts" class="nav-link" title="Kev's Thoughts"><i class="nav-icon" data-lucide="scroll-text"></i></a>
+        </li>
       </ul>
     </nav>
 
+    <!-- Header Hero -->
     <div class="main-content">
-      <!-- Header Hero -->
+      <!-- Theme Toggle for Desktop -->
+      <div id="toggle-container">
+        <div id="theme-toggle-lg">
+          <i class="light-toggle-lg theme-mode" data-lucide="sun"></i>
+          <i class="dark-toggle-lg" data-lucide="moon"></i>
+        </div>
+      </div>
       <section id="header-hero" class="section animate__animated animate__slideInRight">
         <h1>
-          <!-- <i class="fa-solid fa-quote-left"></i> -->
+          <i class="fa-solid fa-quote-left"></i>
           I Build Digital Experiences
         </h1>
         <div class="hero-links">
@@ -169,7 +199,7 @@
           <!-- Card 1 -->
           <div class="card">
             <lord-icon src="https://cdn.lordicon.com/gvtjlyjf.json" trigger="hover"
-              colors="primary:#d1d5db,secondary:#9C4A57" style="width: 70px; height: 70px">
+              colors="primary:#0F172A,secondary:#FF5349" style="width: 70px; height: 70px">
             </lord-icon>
             <h3>Web Dev</h3>
             <p>Building responsive and accessible interfaces with code.</p>
@@ -178,22 +208,11 @@
           <!-- Card 2 -->
           <div class="card">
             <lord-icon src="https://cdn.lordicon.com/qhgmphtg.json" trigger="hover"
-              colors="primary:#d1d5db,secondary:#9C4A57" style="width: 70px; height: 70px">
+              colors="primary:#0F172A,secondary:#FF5349" style="width: 70px; height: 70px">
             </lord-icon>
             <h3>Web Design</h3>
             <p>Creating modern, user friendly designs with strong visuals.</p>
           </div>
-
-          <!-- Card 3 -->
-          <!-- <div class="card">
-            <lord-icon src="https://cdn.lordicon.com/eaegfqtv.json" trigger="hover"
-              colors="primary:#d1d5db,secondary:#9C4A57" style="width: 70px; height: 70px">
-            </lord-icon>
-            <h3>Branding</h3>
-            <p>
-              Creating unique brand visuals that reflect their identity.
-            </p>
-          </div> -->
         </div>
 
         <!-- Tools icons -->
@@ -225,60 +244,57 @@
         <div class="projects-container">
           <!-- Project 1 -->
           <div class="project-card">
-            <div class="project-links">
+            <div class="project-card-image" style="background-image: url('img/allmart.png');"></div>
+            <div class="project-card-content">
               <div class="project-link">
                 <a href="https://seniork7.github.io/api-project/" target="_blank"><i class="fa-regular fa-eye"></i></a>
                 <a href="https://github.com/seniork7/api-project" target="_blank"><i
                   class="fa-brands fa-github"></i></a>
-                </div>
               </div>
-
-              <img src="img/allmart.png" alt="AllMart Groceries" />
               
               <h3>AllMart</h3>
               <p>
                 Full-Stack web app demo where the frontend fetches data from a custom API.
               </p>
 
-              <a href="about-allmart.html">Read more...</a>
+              <a class="read-more" href="about-allmart.html">Read more...</a>
+            </div>
           </div>
 
           <!-- Project 2 -->
           <div class="project-card">
-            <div class="project-links">
+            <div class="project-card-image" style="background-image: url('img/pokehub.png');"></div>
+            <div class="project-card-content">
               <div class="project-link">
                 <a href="https://seniork7.github.io/pokehub/" target="_blank"><i class="fa-regular fa-eye"></i></a>
                 <a href="https://github.com/seniork7/pokehub" target="_blank"><i
                     class="fa-brands fa-github"></i></a>
               </div>
-            </div>
-
-            <img src="img/pokehub.png" alt="Todo App" />
             
-            <h3>PokéHub</h3>
-            <p>
-              Front-end web app where users can sign up, log in and manage their Pokémon troop.
-            </p>
-            <a href="./about-pokehub.html">Read more...</a>
+              <h3>PokéHub</h3>
+              <p>
+                Front-end web app where users can sign up, log in and manage their Pokémon troop.
+              </p>
+              <a class="read-more" href="./about-pokehub.html">Read more...</a>
+            </div>
           </div>
 
           <!-- Project 3 -->
           <div class="project-card">
-            <div class="project-links">
+            <div class="project-card-image" style="background-image: url('img/my-coffee-house-mockup.png');"></div>
+            <div class="project-card-content">
               <div class="project-link">
                 <a href="https://seniork7.github.io/my-coffee-house/" target="_blank"><i class="fa-regular fa-eye"></i></a>
                 <a href="https://github.com/seniork7/my-coffee-house" target="_blank"><i
                     class="fa-brands fa-github"></i></a>
               </div>
-            </div>
 
-            <img src="img/my-coffee-house-mockup.png" alt="Frosted Dough Branding" />
-            
-            <h3>My Coffee House</h3>
-            <p>
-              Front-end web app that includes search, shopping cart and checkout features.
-            </p>
-            <a href="./about-my-coffee-house.html">Read more...</a>
+              <h3>My Coffee House</h3>
+              <p>
+                Front-end web app that includes search, shopping cart and checkout features.
+              </p>
+              <a class="read-more" href="./about-my-coffee-house.html">Read more...</a>
+            </div>
           </div>
         </div>
 
@@ -287,6 +303,42 @@
             account</a>.
         </p>
       </section>
+
+      <!---------------------------- What Others Say ------------------------------>
+      <!-- <section id="what-others-say" class="section container animate__animated animate__slideInRight">
+        <h3>What Others Say</h3>
+        
+    </section> -->
+
+    <!---------------------------- Kev's Thoughts ------------------------------>
+      <section id="thoughts" class="section container animate__animated animate__slideInRight">
+        <h3>Kev's Thoughts</h3>
+        <h2 class="phrase">
+          A space where I share honest reflections about my journey into web development.
+        </h2>
+        <div class="thoughts-posts-container">
+          <!-- Firefighting to Web Development -->
+          <a href="./firefighting-to-webdev.html" class="thought-post-card">
+            <div class="thought-post-image" style="background-image: url('./img/firefighting-webdev.png');"></div>
+            <div class="thought-post-content">
+              <h3>From Firefighting to Web Development</h3>
+              <p>A personal reflection on how my past shaped my mindset as a developer.</p>
+              <span class="read-more">Read more...</span>
+            </div>
+          </a>
+
+          <!-- Learning the Tools -->
+          <a href="./learning-the-tools.html" class="thought-post-card">
+            <div class="thought-post-image" style="background-image: url('./img/code-snip.png');"></div>
+            <div class="thought-post-content">
+              <h3>Learning the Tools: Being a Junior Dev</h3>
+              <p>My journey learning modern web development tools and frameworks.</p>
+              <span class="read-more">Read more...</span>
+            </div>
+          </a>
+        </div>
+      </section>
+
 
       <!---------------------------- Get in Touch Section ------------------------------>
       <section id="contact" class="section container animate__animated animate__slideInRight">
@@ -344,7 +396,6 @@
                 <textarea id="message" name="message" rows="5" required></textarea>
               </div>
               <button type="submit" class="submit-btn">Send</button>
-              <!-- <input type="hidden" name="_next" value="form-submit.html"> -->
             </form>
           </div>
         </div>
@@ -358,6 +409,7 @@
 
   <script src="https://cdn.lordicon.com/lordicon.js"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="feedback.js"></script>
   <script src="script.js"></script>
 </body>
 
