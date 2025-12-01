@@ -697,7 +697,7 @@ nav {
 .project-footer {
   text-align: center;
   padding: 1rem;
-  background: var(--bg-alt);
+  background: var(--card-bg-alt);
   color: var(--text);
   font-size: 0.9rem;
 }
@@ -1006,6 +1006,7 @@ iframe,
 
   #theme-toggle-lg svg {
     padding: 0.2rem;
+    cursor: pointer;
   }
 
   #main-text h2 {
