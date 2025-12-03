@@ -124,6 +124,11 @@ p {
   display: none;
 }
 
+  #main-text h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+  }
+
 .section {
   display: flex;
   flex-direction: column;
@@ -346,11 +351,13 @@ nav {
   margin: 0.5rem 0;
 }
 
-.tailwindcss-logo {
+.tailwindcss-logo,
+.mongodb-logo {
   width: 40px;
 }
 
-.tailwindcss-about {
+.tailwindcss-about,
+.mongodb-about {
   width: 45px;
 }
 
@@ -848,9 +855,7 @@ iframe,
   }
 
   #main-text h2 {
-    font-family: 'Fraunces', serif;
     font-size: 3rem;
-    font-weight: 600;
   }
 
   .mobile-navbar {

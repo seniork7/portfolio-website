@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Public Safety — Volunteer Landing Page</title>
+        <meta name="description" content="Public Safety — Volunteer Landing Page. Learn about community safety initiatives and submit volunteer applications." />
+        <link rel="canonical" href="https://seniork7.github.io/portfolio-website/" />
+        <meta property="og:title" content="Public Safety — Volunteer Landing Page" />
+        <meta property="og:description" content="A landing page that communicates public safety initiatives and allows users to submit volunteer applications." />
+        <meta property="og:url" content="https://seniork7.github.io/portfolio-website/" />
+        <meta property="og:image" content="https://seniork7.github.io/portfolio-website/og-image.jpg" />
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div id="toggle-container">
+            <div id="theme-toggle-lg">
+                <i class="light-toggle-lg theme-mode" data-lucide="sun"></i>
+                <i class="dark-toggle-lg" data-lucide="moon"></i>
+            </div>
+        </div>
+
+        <header class="project-header">
+            <div class="header-content">
+                <h1 class="project-title">Public Safety</h1>
+                <p class="project-subtitle">A full-stack web application designed to help communities learn about public safety programs and register as volunteers.</p>
+            </div>
+            <iframe src="https://www.youtube-nocookie.com/embed/ZXlhRw2_xOw" title="Public Safety Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </header>
+
+        <main class="project-main">
+            <section class="project-section">
+                <h2 class="section-title">Project Overview</h2>
+                <p class="section-text">Public Safety is a full-stack project that provides community members with information about public safety initiatives and an easy way to apply as volunteers. The app uses a <code>React</code> frontend and an <code>Express/MongoDB</code> backend to securely collect and store volunteer applications.</p>
+            </section>
+
+            <section class="project-section">
+                <h2 class="section-title">Goal</h2>
+                <p class="section-text">Build a responsive landing page that communicates public safety initiatives and allows users to submit volunteer applications.</p>
+            </section>
+
+            <section class="project-section">
+                <h2 class="section-title">Process</h2>
+                <div class="section-text">
+                <p>Throughout the development process, I encountered a few challenges:</p>
+                    <ol class="section-list">
+                        <li>
+                            <strong>Challenge:</strong> This was my first time using <code>MongoDB</code> and <code>Mongoose</code>. Understanding <code>schemas</code>, connecting the database, handling <code>async</code> operations, and managing environment variables was initially confusing, especially when moving from local development to deployment.
+                            <br>
+                            <strong>Solution:</strong> I reviewed <code>Mongoose</code> documentation, learned how to structure a schema, and followed best practices for <code>async</code> error handling. I also learned how to keep sensitive credentials safe using environment variables instead of hardcoding them. Deployment required whitelisting server IPs in <code>MongoDB</code> Atlas and setting up the correct connection string for production.
+                        </li>
+                        <li>
+                            <strong>Challenge:</strong> During development, I originally used <code>port 5000</code> for my backend, not realizing that macOS uses that port for system services. This caused random connection failures <code>(403 status)</code>, and the server wouldn’t start.
+                            <br>
+                            <strong>Solution:</strong> I changed the development port to 3000, which solved the conflict and helped me understand that certain ports are reserved or have higher chances of conflict on different operating systems.
+                        </li>
+                        <li>
+                            <strong>Challenge:</strong> Hosting both the frontend and backend was still a bit new to me since this was my second full-stack project. Hence, I ran into some issues with missing <code>Node</code> modules, incorrect build commands, and environment variables not being detected on Render. The backend would build successfully but fail at runtime because modules weren’t installed and the database wasn't connecting.
+                            <br>
+                            <strong>Solution:</strong> I learned how hosting platforms work behind the scenes, specifically how they install dependencies and run build/start commands. Adding <code>npm install</code> to the Render build step and correctly setting my environment variables fixed the issues. I also switched to using a shared access in <code>MongoDB</code> so that any IP address could connect without being whitelisted.
+                        </li>
+                        <li>
+                            <strong>Challenge:</strong> Coming from basic <code>JavaScript</code>, thinking in terms of components, props, and reusable UI patterns was a bit new to me. I also had to learn how to handle form state and success/error messages.
+                            <br>
+                            <strong>Solution:</strong> I broke the UI into small reusable <code>React</code> components <code>(forms, cards, sections)</code> and used <code>useState</code> to manage input and submission states. This helped me understand component architecture and code organization.
+                        </li>
+                        <li>
+                            <strong>Challenge:</strong> I started using Flowbite but later decided to remove it to have more control over the design.
+                            <br>
+                            <strong>Solution:</strong> I rebuilt <code>buttons</code>, <code>cards</code>, <code>inputs</code>, and <code>layouts</code> using pure <code>Tailwind CSS</code>. This helped me gain confidence in styling and improved the quality and consistency of the final UI.
+                        </li>
+                    </ol>
+                </div>
+            </section>
+
+            <section class="project-section">
+                <h2 class="section-title">Tech Stack</h2>
+                <div class="tech-stack">
+                    <div class="tech-item"><i class="fa-brands fa-node-js fa-2x"></i><p>Node.js</p></div>
+                    <div class="tech-item"><i class="fa-solid fa-server fa-2x"></i><p>Express</p></div>
+                    <div class="tech-item"><img src="img/mongodb.svg" class="mongodb-about" alt="MongoDB Logo" title="MongoDB"/><p>MongoDB</p></div>
+                    <div class="tech-item"><i class="fa-brands fa-react fa-2x"></i><p>React</p></div>
+                    <div class="tech-item"><img src="img/tailwind.svg" class="tailwindcss-about" alt="Tailwind CSS Logo" title="Tailwind CSS"/><p>TailwindCSS</p></div>
+                </div>
+            </section>
+
+        <!-- Key Features -->
+        <section class="project-section">
+            <h2 class="section-title">Key Features</h2>
+            <ol class="section-list">
+                <li></li>
+                <li>A search feature to find volunteer programs</li>
+                <li>Registration form that submits users application data to MongoDB</li>
+                <li>A contact form for users to reach out</li>
+            </ol>
+        </section>
+
+            <section class="project-section">
+                <h2 class="section-title">What I Learned</h2>
+                <p class="section-text">
+                    This project taught me valuable lessons, including:
+                </p>
+                <ul class="section-list">
+                    <li>How to structure and organize a React project</li>
+                    <li>Building a REST API to POST data</li>
+                    <li>Connecting Node/Express apps to MongoDB Atlas</li>
+                    <li>Debugging and troubleshooting issues in full-stack applications</li>
+                </ul>
+            </section>
+
+            <section class="project-section">
+                <h2 class="section-title">Links</h2>
+                <ul class="section-list">
+                    <li><a href="https://github.com/seniork7/public-safety" target="_blank">GitHub Repository</a></li>
+                    <li><a href="https://public-safety.netlify.app/" target="_blank">Frontend</a></li>
+                    <li><a href="https://public-safety.onrender.com/" target="_blank">Backend</a></li>
+                </ul>
+            </section>
+
+            <span class="back-link"><a href="index.html#projects"><i class="fa-solid fa-arrow-left"></i> Back to Projects</a></span>
+        </main>
+
+        <footer class="project-footer">
+            <p>&copy; 2025 Kevon Senior | Public Safety</p>
+        </footer>
+
+        <script src="https://cdn.lordicon.com/lordicon.js"></script>
+        <script src="https://unpkg.com/lucide@latest"></script>
+        <script src="script.js"></script>
+    </body>
+</html>
