@@ -10,6 +10,7 @@ const themeToggleSM = document.getElementById('theme-toggle-sm');
 const darkToggleSM = document.querySelector('.dark-toggle-sm');
 const lightToggleSM = document.querySelector('.light-toggle-sm');
 const lordIcons = document.querySelectorAll('lord-icon');
+const slideshowContainer = document.querySelector('.slideshow-container');
 
 // Set site theme based on localStorage
 localStorage.getItem('theme') === 'dark' ? html.classList.add('dark') : html.classList.remove('dark');
@@ -180,3 +181,72 @@ if (themeToggleSM) {
 // Initialize Lucide icons
 lucide.createIcons();
 
+// Slideshow for "What Others Say" section
+feedback.forEach((item) => {
+    const slide = document.createElement('div');
+    slide.classList.add('slide');
+    slide.innerHTML = `
+        <div class="feedback-card">
+            <div class="author">
+                <div class="author-identity">
+                    ${item.image ? `<img src="${item.image}" alt="${item.name}" class="author-image">` : `<i class="fa-regular fa-user author-icon"></i>`}
+                    <p class="author-name">${item.name}</p>
+                </div>
+                ${item.link ? `
+                    <a href="${item.link}" target="_blank" class="author-link">
+                    <i class="fab fa-linkedin fa-2x"></i>
+                    </a>` : ''}
+            </div>
+            <p class="feedback-text">"${item.feedback}"</p>
+            ${item.context ? `<p class="author-context">~ ${item.context}</p>` : ''}
+            <div class="strengths">
+                ${item.strengths.map(strength => `<span class="strength">${strength}</span>`).join('')}
+            </div>
+        </div>
+    `;
+    
+    slideshowContainer.appendChild(slide);
+});
+
+const slides = document.querySelectorAll('.slide');
+const prevBtn = document.querySelector('.prev-btn');
+const nextBtn = document.querySelector('.next-btn');
+let currentSlide = 0;
+
+// Prev and Next button functionality
+if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+        prevSlide();
+    });
+}
+
+if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+        nextSlide();
+    });
+}
+
+// Show the current slide
+function showSlide(index) {
+    slides.forEach((slide, i) => {
+        slide.style.display = i === index ? 'block' : 'none';
+    });
+}
+
+// Show next slide
+function nextSlide() {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+}
+
+// Show previous slide
+function prevSlide() {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    showSlide(currentSlide);
+}
+
+// Show the first slide initially
+showSlide(currentSlide);
+
+// Change slide every 5 seconds
+// setInterval(nextSlide, 5000);

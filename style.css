@@ -61,6 +61,7 @@ table {
   --code-text: #F8FAFC;
   --card-bg: #F8FAFC;
   --card-bg-alt: #F1F5F9;
+  --card-border: #080808;
   --grid: rgba(15, 23, 42, 0.05);
   --theme-mode-bg: #f8fafc;
   --theme-container-bg: rgba(15, 23, 42, 0.1);
@@ -70,12 +71,14 @@ table {
   --bg: #080808;                   
   --bg-alt: #080808;            
   --text: #F5F5F5;               
-  --accent: #df5a4e;             
+  --accent: #df5a4e;  
+  --btn: #37A297;           
   --btn-text: #F5F5F5;  
   --card-bg: #131313;
   --card-bg-alt: #131313;          
   --strong-text: #FF6A5C;      
   --code-text: #080808;
+  --card-border: #E2E8F0;
   --grid: rgba(248, 250, 252, 0.02);
   --theme-mode-bg: rgba(248, 250, 252, 0.20);
   --theme-container-bg: rgba(255, 255, 255, 0.04);
@@ -324,7 +327,8 @@ nav {
 }
 
 #skills, 
-#thoughts {
+#what-others-say,
+#contact {
   background: var(--bg-alt);
 }
 
@@ -337,10 +341,11 @@ nav {
 }
 
 .card {
-  background: var(--card-bg-alt);
+  background: var(--card-bg);
   padding: 2rem;
   width: 15rem;
   border-radius: 10px;
+  border-bottom: var(--card-border) 5px solid;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
   text-align: center;
   transition: all 0.4s ease-in-out;
@@ -396,6 +401,7 @@ nav {
   padding: 0.5rem;
   background: var(--card-bg);
   border-radius: 10px;
+  border-bottom: var(--card-border) 5px solid;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
   transition: all 0.4s ease-in-out;
   width: 15rem;
@@ -462,6 +468,7 @@ nav {
   width: 15rem;
   background: var(--card-bg-alt);
   border-radius: 10px;
+  border-bottom: var(--card-border) 5px solid;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
   overflow: hidden;
   text-decoration: none;
@@ -840,6 +847,89 @@ iframe,
   display: none;
 }
 
+.slideshow-container {
+  margin-top: 1rem;
+}
+
+.feedback-card {
+  background: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 10px;
+  border-bottom: var(--card-border) 5px solid;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s ease-in-out;
+}
+
+.author {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.author-identity {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.author-link {
+  font-size: 0.7rem;
+  text-decoration: none;
+  color: var(--btn);
+  transition: color 0.4s ease;
+}
+
+.strengths {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.strength {
+  background: var(--accent);
+  padding: 0.3rem 0.6rem;
+  border-radius: 8px;
+}
+
+.feedback-text {
+  margin-top: 1rem;
+}
+
+.author-context {
+  margin: 1.5rem 0;
+}
+
+.author-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+}
+
+.slideshow-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+  margin-top: 1.7rem;
+}
+
+.slideshow-controls button {
+  background: var(--btn);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  color: var(--btn-text);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+}
+
 @media screen and (min-width: 768px) {
   html {
     font-size: 16.5px;
@@ -959,6 +1049,10 @@ iframe,
   .blog-section .section-text {
     font-size: 1.05rem;
   }
+
+  .feedback-card {
+    max-width: 70vw;
+  }
 }
 
 @media screen and (min-width: 1024px) {
@@ -976,13 +1070,13 @@ iframe,
   }
 
   #skills,
-  #thoughts {
+  #contact {
     background-color: transparent;
   }
 
   #about, 
   #projects,
-  #contact {
+  #thoughts {
     background: var(--bg-alt);
   }
 
@@ -1220,6 +1314,14 @@ iframe,
     padding: 0;
   }
 
+  #what-others-say {
+    background: transparent;
+  }
+
+  .feedback-card {
+    background: var(--card-bg-alt);
+  }
+
   #about h2 {
     max-width: 20rem;
   }
@@ -1232,7 +1334,7 @@ iframe,
   }
 
   .card {
-    background: var(--card-bg);
+    background: var(--card-bg-alt);
   }
 
   .card:hover {
@@ -1253,7 +1355,7 @@ iframe,
     padding: 0.5rem;
     height: 20rem;
     justify-content: start;
-    background: var(--card-bg-alt);
+    background: var(--card-bg);
   }
 
   .project-card:hover {
@@ -1519,6 +1621,10 @@ iframe,
 
   .blog-footer {
     font-size: 1rem;
+  }
+
+  .feedback-card {
+    max-width: 50vw;
   }
 }
 
