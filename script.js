@@ -2,6 +2,7 @@ const hamburgerMenuBtn = document.querySelector('.hamburger-menu');
 const navMenu = document.querySelector('.nav-list-sm');
 const toolIcons = document.querySelectorAll('.tool-icon');
 const projCard = document.querySelectorAll('.project-card');
+const currentYear = document.getElementById('currentYear');
 const themeToggleLG = document.getElementById('theme-toggle-lg');
 const html = document.documentElement;
 const darkToggleBtn = document.querySelector('.dark-toggle-lg');
@@ -127,6 +128,12 @@ if (contactForm) {
             }
         }
     });
+}
+
+// Set current year in the footer
+if (currentYear) {
+    const year = new Date().getFullYear();
+    currentYear.textContent = year;
 }
 
 // Theme Toggle

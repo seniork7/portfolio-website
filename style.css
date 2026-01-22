@@ -72,7 +72,7 @@ table {
 .dark {
   --bg: #080808;                   
   --bg-alt: #080808;            
-  --text: #F5F5F5;               
+  --text: #f5f5f5;               
   --accent: #df5a4e;  
   --btn: #37A297;           
   --btn-text: #F5F5F5;  
@@ -83,7 +83,7 @@ table {
   --card-border: #E2E8F0;
   --nav-bg: rgba(248, 250, 252, 0.9);
   --nav-link: #080808;
-  --grid: rgba(248, 250, 252, 0.02);
+  --grid: rgba(245, 245, 245, 0.05);
   --theme-mode-bg: rgba(248, 250, 252, 0.20);
   --theme-container-bg: rgba(255, 255, 255, 0.04);
 }
@@ -191,6 +191,29 @@ p {
     padding: 0.2rem;
     border-radius: 50px;
 }
+
+/* Standardized theme toggle styles */
+.theme-toggle {
+  display: inline-flex;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 0.2rem;
+  border-radius: 999px;
+  background: var(--theme-container-bg);
+  border: none;
+  cursor: pointer;
+}
+.theme-toggle .toggle-icon {
+  display: none;
+  width: 24px;
+  height: 24px;
+}
+/* Show moon icon in light mode (html has no .dark) */
+html:not(.dark) .theme-toggle .moon { display: inline-block; }
+/* Show sun icon in dark mode */
+html.dark .theme-toggle .sun { display: inline-block; }
+.theme-toggle .toggle-icon { padding: 0.15rem; border-radius: 50%; }
+.theme-toggle:focus { outline: 2px solid rgba(20,184,166,0.2); }
 
 #headshot-img {
   height: 300px;
