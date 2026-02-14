@@ -5,41 +5,69 @@ const projCard = document.querySelectorAll('.project-card');
 const currentYear = document.getElementById('currentYear');
 const themeToggleLG = document.getElementById('theme-toggle-lg');
 const html = document.documentElement;
-const darkToggleBtn = document.querySelector('.dark-toggle-lg');
-const lightToggleBtn = document.querySelector('.light-toggle-lg');
 const themeToggleSM = document.getElementById('theme-toggle-sm');
-const darkToggleSM = document.querySelector('.dark-toggle-sm');
-const lightToggleSM = document.querySelector('.light-toggle-sm');
 const lordIcons = document.querySelectorAll('lord-icon');
 const slideshowContainer = document.querySelector('.slideshow-container');
 
-// Set site theme based on localStorage
-localStorage.getItem('theme') === 'dark' ? html.classList.add('dark') : html.classList.remove('dark');
+// Update the colours of the animated icons based on the current theme
+function updateLordIconColors(isDark) {
+    lordIcons.forEach(icon => {
+        if (isDark) {
+            icon.setAttribute('colors', 'primary:#F5F5F5,secondary:#df5a4e');
+        } else {
+            icon.setAttribute('colors', 'primary:#0F172A,secondary:#FF5349');
+        }
+    });
+}
 
-// Set icon theme based on localStorage
-lordIcons.forEach(icon => {
-    if (localStorage.getItem('theme') === 'dark') {
-        icon.setAttribute('colors', 'primary:#F5F5F5,secondary:#df5a4e');
-    } else {
-        icon.setAttribute('colors', 'primary:#0F172A,secondary:#FF5349');
+// Set the <html> dark class and update lord-icon colours
+function setTheme(isDark) {
+    if (isDark) html.classList.add('dark');
+    else html.classList.remove('dark');
+
+    localStorage.setItem('theme', isDark ? 'dark' : '');
+
+    updateLordIconColors(isDark);
+
+    if (window.lucide && typeof lucide.createIcons === 'function') {
+        lucide.createIcons();
     }
-});
+}
 
-// Set a default state for the menu
+// Initialize the theme toggle buttons
+function initThemeToggle() {
+    const isDark = localStorage.getItem('theme') === 'dark';
+    setTheme(isDark);
+
+    if (themeToggleLG) {
+        themeToggleLG.addEventListener('click', () => {
+            setTheme(!document.documentElement.classList.contains('dark'));
+        });
+    }
+
+    if (themeToggleSM) {
+        themeToggleSM.addEventListener('click', () => {
+            setTheme(!document.documentElement.classList.contains('dark'));
+        });
+    }
+}
+
 let menuOpen = false;
 
-// Add click event on the hamburger menu
-hamburgerMenuBtn.addEventListener('click', () => {
-    if (!menuOpen) {
-        hamburgerMenuBtn.classList.add('close');
-        navMenu.classList.add('open');
-        menuOpen = true;
-    } else {
-        hamburgerMenuBtn.classList.remove('close');
-        navMenu.classList.remove('open');
-        menuOpen = false;
-    }
-});
+// Add click event on the hamburger menu 
+if (hamburgerMenuBtn && navMenu) {
+    hamburgerMenuBtn.addEventListener('click', () => {
+        if (!menuOpen) {
+            hamburgerMenuBtn.classList.add('close');
+            navMenu.classList.add('open');
+            menuOpen = true;
+        } else {
+            hamburgerMenuBtn.classList.remove('close');
+            navMenu.classList.remove('open');
+            menuOpen = false;
+        }
+    });
+}
 
 // Remove the animation from the social links when hover
 const socialIcons = document.querySelectorAll('.social-icons');
@@ -54,20 +82,21 @@ socialIcons.forEach(icon => {
 
 // Function to animate the icons
 function addAnimation() {
-    // Pick a random icon
-    const randomIcon = toolIcons[Math.floor(Math.random() * toolIcons.length)];
+    if (!toolIcons || toolIcons.length === 0) return;
 
-    // Add the animate__rubberBand
+    const randomIcon = toolIcons[Math.floor(Math.random() * toolIcons.length)];
+    if (!randomIcon) return;
+
     randomIcon.classList.add('animate__animated', 'animate__rubberBand');
 
-    // Remove the animation class after it finishes
     setTimeout(() => {
         randomIcon.classList.remove('animate__animated', 'animate__rubberBand');
     }, 1000);
 }
 
-// Trigger the pulse effect at random intervals
-setInterval(addAnimation, 2000);
+if (toolIcons && toolIcons.length > 0) {
+    setInterval(addAnimation, 2000);
+}
 
 // Form Authentication
 const contactForm = document.getElementById('contactForm');
@@ -136,84 +165,39 @@ if (currentYear) {
     currentYear.textContent = year;
 }
 
-// Theme Toggle
-function handleThemeToggle(e, mode) {
-    const { darkToggle, lightToggle } = mode;
-    if (e.target.closest('.dark-toggle-lg, .dark-toggle-sm')) {
-        html.classList.add('dark');
-        if (lightToggle) {
-            lightToggle.classList.remove('theme-mode');
-        }
-        if (darkToggle) {
-            darkToggle.classList.add('theme-mode');
-        }
-    }
-    if (e.target.closest('.light-toggle-lg, .light-toggle-sm')) {
-        html.classList.remove('dark');
-        if (lightToggle) {
-            lightToggle.classList.add('theme-mode');
-        }
-        if (darkToggle) {
-            darkToggle.classList.remove('theme-mode');
-        }
-    }
-    localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : '');
-    lordIcons.forEach(icon => {
-        if (html.classList.contains('dark')) {
-            icon.setAttribute('colors', 'primary:#F5F5F5,secondary:#df5a4e');
-        } else {
-            icon.setAttribute('colors', 'primary:#0F172A,secondary:#FF5349');
-        }
-    });
-}
-
-// Theme toggle for large screens
-themeToggleLG.addEventListener('click', (e) => {
-    handleThemeToggle(e, {
-        darkToggle: darkToggleBtn,
-        lightToggle: lightToggleBtn
-    });
-});
-
-// Theme toggle for small screens
-if (themeToggleSM) {
-    themeToggleSM.addEventListener('click', (e) => {
-        handleThemeToggle(e, {
-            darkToggle: darkToggleSM,
-            lightToggle: lightToggleSM
-        });
-    });
-}
+// Initialize the theme toggle buttons
+initThemeToggle();
 
 // Initialize Lucide icons
 lucide.createIcons();
 
 // Slideshow for "What Others Say" section
-feedback.forEach((item) => {
-    const slide = document.createElement('div');
-    slide.classList.add('slide');
-    slide.innerHTML = `
-        <div class="feedback-card">
-            <div class="author">
-                <div class="author-identity">
-                    ${item.image ? `<img src="${item.image}" alt="${item.name}" class="author-image">` : `<i class="fa-regular fa-user author-icon"></i>`}
-                    <p class="author-name">${item.name}</p>
+if (typeof feedback !== 'undefined' && Array.isArray(feedback) && slideshowContainer) {
+    feedback.forEach((item) => {
+        const slide = document.createElement('div');
+        slide.classList.add('slide');
+        slide.innerHTML = `
+            <div class="feedback-card">
+                <div class="author">
+                    <div class="author-identity">
+                        ${item.image ? `<img src="${item.image}" alt="${item.name}" class="author-image">` : `<i class="fa-regular fa-user author-icon"></i>`}
+                        <p class="author-name">${item.name}</p>
+                    </div>
+                    ${item.link ? `
+                        <a href="${item.link}" target="_blank" class="author-link">
+                        <i class="fab fa-linkedin fa-2x"></i>
+                        </a>` : ''}
                 </div>
-                ${item.link ? `
-                    <a href="${item.link}" target="_blank" class="author-link">
-                    <i class="fab fa-linkedin fa-2x"></i>
-                    </a>` : ''}
+                <p class="feedback-text">"${item.feedback}"</p>
+                ${item.context ? `<p class="author-context">~ ${item.context}</p>` : ''}
+                <div class="strengths">
+                    ${item.strengths.map(strength => `<span class="strength">${strength}</span>`).join('')}
+                </div>
             </div>
-            <p class="feedback-text">"${item.feedback}"</p>
-            ${item.context ? `<p class="author-context">~ ${item.context}</p>` : ''}
-            <div class="strengths">
-                ${item.strengths.map(strength => `<span class="strength">${strength}</span>`).join('')}
-            </div>
-        </div>
-    `;
-    
-    slideshowContainer.appendChild(slide);
-});
+        `;
+        slideshowContainer.appendChild(slide);
+    });
+}
 
 const slides = document.querySelectorAll('.slide');
 const prevBtn = document.querySelector('.prev-btn');
@@ -252,8 +236,5 @@ function prevSlide() {
     showSlide(currentSlide);
 }
 
-// Show the first slide initially
+// Show the first slide on page load
 showSlide(currentSlide);
-
-// Change slide every 5 seconds
-// setInterval(nextSlide, 5000);

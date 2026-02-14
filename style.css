@@ -5,48 +5,135 @@
    License: none (public domain)
 */
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
 }
+
 body {
-	line-height: 1;
+  line-height: 1;
 }
-ol, ul {
-	list-style: none;
+
+ol,
+ul {
+  list-style: none;
 }
-blockquote, q {
-	quotes: none;
+
+blockquote,
+q {
+  quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
 }
+
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 /* Custom Styles */
@@ -70,15 +157,15 @@ table {
 }
 
 .dark {
-  --bg: #080808;                   
-  --bg-alt: #080808;            
-  --text: #f5f5f5;               
-  --accent: #df5a4e;  
-  --btn: #37A297;           
-  --btn-text: #F5F5F5;  
+  --bg: #080808;
+  --bg-alt: #080808;
+  --text: #f5f5f5;
+  --accent: #df5a4e;
+  --btn: #37A297;
+  --btn-text: #F5F5F5;
   --card-bg: #131313;
-  --card-bg-alt: #131313;          
-  --strong-text: #FF6A5C;      
+  --card-bg-alt: #131313;
+  --strong-text: #FF6A5C;
   --code-text: #080808;
   --card-border: #E2E8F0;
   --nav-bg: rgba(248, 250, 252, 0.9);
@@ -131,10 +218,10 @@ p {
   display: none;
 }
 
-  #main-text h2 {
-    font-family: 'Fraunces', serif;
-    font-weight: 600;
-  }
+#main-text h2 {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+}
 
 .section {
   display: flex;
@@ -185,14 +272,13 @@ p {
 }
 
 #theme-toggle-sm {
-    display: flex;
-    gap: 1.5rem;
-    background: var(--theme-container-bg);
-    padding: 0.2rem;
-    border-radius: 50px;
+  display: flex;
+  gap: 1.5rem;
+  background: var(--theme-container-bg);
+  padding: 0.2rem;
+  border-radius: 50px;
 }
 
-/* Standardized theme toggle styles */
 .theme-toggle {
   display: inline-flex;
   gap: 0.5rem;
@@ -203,24 +289,55 @@ p {
   border: none;
   cursor: pointer;
 }
+
 .theme-toggle .toggle-icon {
   display: none;
   width: 24px;
   height: 24px;
 }
-/* Show moon icon in light mode (html has no .dark) */
-html:not(.dark) .theme-toggle .moon { display: inline-block; }
-/* Show sun icon in dark mode */
-html.dark .theme-toggle .sun { display: inline-block; }
-.theme-toggle .toggle-icon { padding: 0.15rem; border-radius: 50%; }
-.theme-toggle:focus { outline: 2px solid rgba(20,184,166,0.2); }
+
+html:not(.dark) .theme-toggle .moon {
+  display: inline-block;
+}
+
+html.dark .theme-toggle .sun {
+  display: inline-block;
+}
+
+.theme-toggle .toggle-icon {
+  color: var(--text);
+}
+
+.theme-toggle svg {
+  stroke: currentColor;
+}
+
+html:not(.dark) .theme-toggle .moon {
+  color: var(--text);
+}
+
+html.dark .theme-toggle .sun {
+  color: var(--btn-text);
+  background: var(--theme-mode-bg);
+  border-radius: 50%;
+  padding: 0.15rem;
+}
+
+.theme-toggle .toggle-icon {
+  padding: 0.15rem;
+  border-radius: 50%;
+}
+
+.theme-toggle:focus {
+  outline: 2px solid rgba(20, 184, 166, 0.2);
+}
 
 #headshot-img {
   height: 300px;
 }
 
 .main-content {
-  background-image: 
+  background-image:
     linear-gradient(to right, var(--grid) 1px, transparent 1px),
     linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
   background-size: 70px 70px;
@@ -351,10 +468,10 @@ nav {
 #contact,
 #thoughts,
 #what-others-say {
-    padding: 3rem 1.5rem;
+  padding: 3rem 1.5rem;
 }
 
-#skills, 
+#skills,
 #what-others-say,
 #contact {
   background: var(--bg-alt);
@@ -505,9 +622,9 @@ nav {
 }
 
 .thought-post-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-    opacity: 0.85;
+  transform: translateY(-10px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  opacity: 0.85;
 }
 
 .thought-post-image {
@@ -768,6 +885,18 @@ strong {
   transition: color 0.4s ease;
 }
 
+.back-link+#toggle-container-sm {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.6rem;
+}
+
+#toggle-container-sm .theme-toggle {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .render-link {
   color: var(--btn);
   transition: color 0.4s ease;
@@ -824,7 +953,7 @@ iframe,
 .form-group textarea {
   padding: 12px 14px;
   border-radius: 10px;
-  background: rgba(255,255,255,0.03);
+  background: rgba(255, 255, 255, 0.03);
   color: var(--text);
   font-size: 1rem;
   outline: none;
@@ -997,10 +1126,6 @@ iframe,
     padding: 5.5rem 1rem 0 1rem;
   }
 
-  .nav-list {
-    gap: 4rem;
-  }
-
   .social-icons a {
     font-size: 1rem;
     padding: 8px 12px;
@@ -1009,7 +1134,7 @@ iframe,
   .about-text {
     max-width: 35rem;
   }
-  
+
   .skills-cards {
     flex-direction: row;
   }
@@ -1102,7 +1227,7 @@ iframe,
     background-color: transparent;
   }
 
-  #about, 
+  #about,
   #projects,
   #thoughts {
     background: var(--bg-alt);
@@ -1292,7 +1417,7 @@ iframe,
     gap: 3rem;
     margin-top: 3rem;
   }
-    
+
   .hero-links a {
     display: flex;
     align-items: center;
@@ -1323,6 +1448,7 @@ iframe,
   .hero-links a:nth-child(1):hover {
     background: var(--accent);
   }
+
   .hero-links a:nth-child(2):hover {
     border-color: var(--accent);
     color: var(--accent);
@@ -1462,8 +1588,8 @@ iframe,
     display: none;
   }
 
-iframe,
-.thoughts-hero-img{
+  iframe,
+  .thoughts-hero-img {
     width: 800px;
     height: 450px;
   }
@@ -1491,49 +1617,49 @@ iframe,
   }
 
   .timeline {
-  display: flex;
-  gap: 1rem;
-  position: relative;
-  padding: 0;
-  flex: 0 0 25%;
-  flex-direction: column;
-  gap: 0.5rem;
-  padding: 0 1rem;
-}
+    display: flex;
+    gap: 1rem;
+    position: relative;
+    padding: 0;
+    flex: 0 0 25%;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0 1rem;
+  }
 
-.timeline::before {
-  display: none;
-}
+  .timeline::before {
+    display: none;
+  }
 
-.step {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-}
+  .step {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+  }
 
-.dot {
-  margin-bottom: 0.25rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: var(--accent);
-  color: var(--btn-text);
-  font-size: 24px;
-  font-weight: 600;
-  padding: 17px;
-  flex-shrink: 0;
-  position: relative;
-  top: 2px;
-}
+  .dot {
+    margin-bottom: 0.25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--btn-text);
+    font-size: 24px;
+    font-weight: 600;
+    padding: 17px;
+    flex-shrink: 0;
+    position: relative;
+    top: 2px;
+  }
 
-.step p {
-  margin-bottom: 0 !important;
-}
+  .step p {
+    margin-bottom: 0 !important;
+  }
 
   .timeline::before {
     display: block;
@@ -1545,7 +1671,7 @@ iframe,
     height: 100%;
   }
 
-  .timeline-bar{
+  .timeline-bar {
     width: 3px;
     height: 3rem;
     background: var(--accent);
@@ -1657,7 +1783,7 @@ iframe,
 }
 
 @media screen and (min-width: 1280px) {
-    html {
+  html {
     font-size: 17px;
   }
 
