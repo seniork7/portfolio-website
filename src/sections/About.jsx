@@ -39,7 +39,7 @@ export default function About() {
 
             <div className="space-y-4 text-base text-zinc-900 dark:text-zinc-50 leading-relaxed">
               <p>
-                Before I wrote code, I spent six as a firefighter.
+                Before I wrote code, I spent six years as a firefighter.
                 That job trained me to stay calm in chaos, make fast decisions
                 with limited information, and never compromise on standards when
                 it counts. That mindset is still how I approach software today.
