@@ -82,7 +82,7 @@ export default function About() {
             <div className="relative">
               <img
                 src="/images/kevonsenior.png"
-                alt="Kevon Senior – Frontend Developer"
+                alt="Kevon Senior"
                 className="relative w-72 sm:w-80 lg:w-96 aspect-square object-cover object-top rounded-2xl shadow-xl"
                 loading="lazy"
               />

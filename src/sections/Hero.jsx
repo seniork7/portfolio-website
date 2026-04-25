@@ -175,7 +175,7 @@ export default function Hero() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="max-w-md text-base sm:text-lg text-zinc-900 dark:text-zinc-50 mb-6 mx-auto md:mx-0"
             >
-              Frontend / Full-Stack developer specializing in React and structured systems. Former firefighter bringing problem-solving and real-world discipline into software development.
+              Full-Stack developer specializing in React and structured systems. Former firefighter bringing problem-solving and real-world discipline into software development.
             </motion.p>
 
             <motion.div

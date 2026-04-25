@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { ExternalLink, Terminal } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import Button from '../components/ui/Button'
-import { ObjInline, ObjTag } from '../components/ui/ObjTag'
+import { ObjTag } from '../components/ui/ObjTag'
 import projects from '../data/projects'
 
 const fadeUp = {
@@ -123,7 +123,7 @@ export default function Projects() {
               {/* Image */}
               <div className="relative min-h-64 lg:min-h-0 bg-zinc-100 dark:bg-zinc-800 overflow-hidden">
                 <img
-                  src={featured.imageUrl}
+                  src={featured.imageUrl2}
                   alt={`${featured.title} project screenshot`}
                   className="absolute inset-0 w-full h-full object-cover object-top"
                   loading="lazy"
@@ -133,8 +133,8 @@ export default function Projects() {
           </motion.div>
         )}
 
-        {/* Regular Projects Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {/* Regular Projects */}
+        <div className="flex flex-col gap-8">
           {regular.map((project, index) => (
             <motion.div
               key={project.id}
@@ -143,43 +143,76 @@ export default function Projects() {
               whileInView="visible"
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 + index * 0.1 }}
-              className="group rounded-2xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 overflow-hidden hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col"
+              className="rounded-2xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 overflow-hidden hover:shadow-lg transition-shadow duration-300"
             >
-              {/* Image */}
-              <div className="aspect-video bg-zinc-100 dark:bg-zinc-800 overflow-hidden">
-                <img
-                  src={project.imageUrl}
-                  alt={`${project.title} project screenshot`}
-                  className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
-                  loading="lazy"
-                />
-              </div>
+              <div className="grid grid-cols-1 lg:grid-cols-2">
+                {/* Content */}
+                <div className="p-8 sm:p-10 flex flex-col justify-center gap-5">
+                  <div>
+                    <h3 className="font-display font-bold text-2xl sm:text-3xl text-zinc-900 dark:text-zinc-50 mb-2">
+                      {project.title}
+                      <span className="font-normal text-zinc-900 dark:text-zinc-50"> - {project.category}</span>
+                    </h3>
+                    <p className="text-zinc-900 dark:text-zinc-50 text-base">
+                      {project.tagline}
+                    </p>
+                  </div>
 
-              {/* Content */}
-              <div className="p-6 flex flex-col gap-4 flex-1">
-                <div>
-                  <h3 className="font-display font-bold text-xl text-zinc-900 dark:text-zinc-50 mb-1">
-                    {project.title}
-                    <span className="font-normal text-zinc-900 dark:text-zinc-50"> - {project.category}</span>
-                  </h3>
-                  <p className="text-sm text-zinc-900 dark:text-zinc-50">
-                    {project.tagline}
-                  </p>
+                  <div className="space-y-4">
+                    <div>
+                      <p className="text-xs font-semibold tracking-widest uppercase text-zinc-900 dark:text-zinc-50 mb-1">
+                        The Problem
+                      </p>
+                      <p className="text-sm text-zinc-900 dark:text-zinc-50 leading-relaxed">
+                        {project.problem}
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold tracking-widest uppercase text-zinc-900 dark:text-zinc-50 mb-1">
+                        What I Built
+                      </p>
+                      <p className="text-sm text-zinc-900 dark:text-zinc-50 leading-relaxed">
+                        {project.solution}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-wrap gap-x-4 gap-y-1.5">
+                    {project.techStack.map((tech) => (
+                      <ObjTag key={tech} label={tech} />
+                    ))}
+                  </div>
+                  <ProjectLinks liveUrl={project.liveUrl} githubUrl={project.githubUrl} slug={project.slug} />
                 </div>
 
-                <p className="text-sm text-zinc-900 dark:text-zinc-50 leading-relaxed">
-                  {project.impact}
-                </p>
+                {/* Image or placeholder */}
+                <div className="relative min-h-64 lg:min-h-0 bg-zinc-200 dark:bg-zinc-800 overflow-hidden">
+                  {project.imageUrl ? (
+                    <img
+                      src={project.imageUrl}
+                      alt={`${project.title} project screenshot`}
+                      className="absolute inset-0 w-full h-full object-cover object-top"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 p-8 font-mono">
+                      <p className="text-xs font-semibold tracking-widest uppercase text-zinc-500 dark:text-zinc-400 mb-2">
+                        Live API
+                      </p>
+                      <div
+                        className="w-full max-w-xs flex items-center gap-2 px-4 py-2 rounded-lg bg-zinc-100 dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700"
+                      >
+                        <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-400">GET</span>
+                        <span className="text-xs text-zinc-700 dark:text-zinc-300">/api/v1/alerts</span>
+                      </div>
 
-                <ObjInline items={project.techStack} max={4} />
-
-                <div className="mt-auto pt-2">
-                  <ProjectLinks
-                    liveUrl={project.liveUrl}
-                    githubUrl={project.githubUrl}
-                    slug={project.slug}
-                    size="sm"
-                  />
+                      {project.backendUrl && (
+                        <p className="text-xs text-zinc-400 dark:text-zinc-500 mt-2 break-all text-center">
+                          {project.backendUrl}
+                        </p>
+                      )}
+                    </div>
+                  )}
                 </div>
               </div>
             </motion.div>

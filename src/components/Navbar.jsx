@@ -56,7 +56,7 @@ export default function Navbar({ isDark, onThemeToggle }) {
         <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           {/* Logo */}
           <a
-            href="#"
+            href="/"
             onClick={(e) => {
               e.preventDefault()
               window.scrollTo({ top: 0, behavior: 'smooth' })

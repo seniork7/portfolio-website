@@ -133,15 +133,17 @@ export default function CaseStudy() {
       </div>
 
       {/* ── Screenshot ────────────────────────────────────── */}
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-1">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.25 }}
-          className="rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-xl shadow-zinc-200/50 dark:shadow-zinc-950/50"
-        >
-          <img src={project.imageUrl} alt={`${project.title} screenshot`} className="w-full object-cover object-top" />
-        </motion.div>
-      </div>
+      {project.imageUrl && (
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-1">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.25 }}
+            className="rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-xl shadow-zinc-200/50 dark:shadow-zinc-950/50"
+          >
+            <img src={project.imageUrl} alt={`${project.title} screenshot`} className="w-full object-cover object-top" />
+          </motion.div>
+        </div>
+      )}
 
       {/* ── Main Content ──────────────────────────────────── */}
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
@@ -203,7 +205,6 @@ export default function CaseStudy() {
                   {/* Tier diagram */}
                   <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-0">
                     {[
-                      { label: 'React Frontend', color: 'text-teal-700 dark:text-teal-300' },
                       { label: 'Node / Express API', color: 'text-violet-700 dark:text-violet-300' },
                       { label: 'MongoDB', color: 'text-emerald-700 dark:text-emerald-300' },
                     ].map((tier, i, arr) => (
@@ -430,8 +431,12 @@ export default function CaseStudy() {
                   onClick={() => window.scrollTo(0, 0)}
                   className="group flex items-center gap-4 p-4 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 hover:border-teal-300 dark:hover:border-teal-700 hover:shadow-sm transition-all duration-200"
                 >
-                  <div className="w-16 h-12 rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shrink-0">
-                    <img src={p.imageUrl} alt={p.title} className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300" />
+                  <div className="w-16 h-12 rounded-lg overflow-hidden bg-zinc-200 dark:bg-zinc-800 shrink-0 flex items-center justify-center">
+                    {p.imageUrl ? (
+                      <img src={p.imageUrl} alt={p.title} className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300" />
+                    ) : (
+                      <Terminal size={16} className="text-zinc-400 dark:text-zinc-500" />
+                    )}
                   </div>
                   <div className="min-w-0">
                     <p className="font-semibold text-sm text-zinc-900 dark:text-zinc-50 truncate">{p.title}</p>
