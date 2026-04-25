@@ -67,6 +67,11 @@ const projects = [
           'Real admins can edit their display name and change their password. Demo_Admin accounts are fully read-only; inputs are disabled and a notice explains why. When a name change is saved, the parent component calls login({ ...user, ...newData }) to merge the update into React Context, so the dashboard header reflects the new name instantly without a page reload.',
       },
       {
+        title: 'Admin Notes',
+        description:
+          'Admins can attach persistent notes to any volunteer application directly from the side panel. Notes are stored as a subdocument array on the application document in MongoDB, each recording the note text, the author\'s name, and a timestamp. The panel loads all existing notes automatically when an application is opened and supports adding new notes, editing existing ones inline, and deleting them - with all three operations backed by API endpoints (POST, PATCH, DELETE) and reflected in the UI instantly without re-fetching the full application list.',
+      },
+      {
         title: 'Dynamic Safety Tip Pages',
         description:
           'Shareable standalone pages at /safety-tip/:id with article content, a sticky sidebar, and copy/share functionality. Built as separate React Router routes so each alert has its own URL.',
@@ -137,12 +142,6 @@ const projects = [
         detail:
           'The backend URL lives in api_url.js as a plain string. Switching environments requires a code change rather than an environment variable swap.',
         fix: 'Use import.meta.env.VITE_API_URL defined in .env.local for development and .env.production for deployment.',
-      },
-      {
-        issue: 'Admin Notes are UI-only - not persisted',
-        detail:
-          'The application detail panel has an Admin Notes textarea with a Save button. There is no API call behind it and no database field for it. Admins clicking Save are silently doing nothing.',
-        fix: 'Add a notes field to the volunteer schema, a PATCH endpoint to update it, and wire the button to that endpoint.',
       },
       {
         issue: 'Dashboard stats are computed in-memory',
