@@ -177,15 +177,15 @@ const projects = [
     id: 2,
     slug: 'safepoint',
     title: 'SafePoint',
-    tagline: 'A public safety data API for Canadian developers, centralizing alerts, recalls, and incidents from official government sources behind a single REST interface.',
+    tagline: 'A multi-tenant B2G platform that gives government agencies the tools to upload, manage, and expose structured public safety data through a unified REST API.',
     problem:
-      'Public safety information in Canada is scattered across multiple federal and provincial agencies: Environment Canada, Health Canada, CFIA, CCCS, WSIB - each with its own data format and access pattern. Developers building civic apps or dashboards have to scrape, normalize, and stitch these sources together themselves.',
+      'Public safety data exists, but it\'s scattered and unusable. In Canada it\'s siloed across federal and provincial agencies with no unified access layer. In Jamaica and across the Caribbean the problem is worse - agencies have no structured data infrastructure at all. Reports are handwritten, filed in spreadsheets, or buried in PDFs. Developers who want to build on this data have to scrape and normalize it themselves, and often there\'s nothing to scrape.',
     solution:
-      'Built a REST API that centralizes Canadian public safety data behind a single consistent interface with standardized schemas, pagination, and filtering. The weather alerts pipeline is live and serves as the reference implementation for the remaining content types.',
+      'Built a B2G platform that solves the problem at the source. Instead of scraping data from the outside, SafePoint gives agencies the tools to upload their own data - CSV exports or manual dashboard entries - and normalizes everything into a consistent schema behind a single REST API. Agency auth, the incident pipeline, and manual input ingestion are live. CSV ingestion is in progress.',
     impact:
-      'Demonstrates backend API design, scheduled data pipelines, deduplication strategy, rate limiting, and a clean separation of concerns across a Node/Express/MongoDB stack - applied to a real public-sector data problem.',
-    techStack: ['Node.js', 'Express', 'MongoDB', 'node-cron', 'express-rate-limit'],
-    category: 'Backend',
+      'Demonstrates multi-tenant API design, JWT-based agency authentication, schema-driven validation, duplicate detection with type-aware time windows, and a clean separation between the ingestion layer and the public API - applied to a real public-sector data problem.',
+    techStack: ['Node.js', 'Express', 'MongoDB', 'Joi', 'JWT', 'Multer', 'csv-parse', 'node-cron', 'React', 'TypeScript', 'Tailwind CSS'],
+    category: 'Full-Stack',
     githubUrl: 'https://github.com/seniork7/safepoint',
     backendUrl: 'https://api.safepoint.kevonsenior.com/api/v1',
     imageUrl: '',
@@ -193,104 +193,112 @@ const projects = [
 
     // Case study
     overview:
-      'Safepoint is a public safety data API for Canadian developers. Public safety information in Canada is fragmented across agencies - each with different formats, update schedules, and access patterns. Safepoint normalizes this behind one REST API with consistent schemas, pagination, and filtering. The weather alerts pipeline is fully operational, pulling from Environment Canada on an hourly cron schedule and persisting to MongoDB with deduplication. It serves as the reference implementation for the remaining seven content type pipelines still in progress.',
+      'SafePoint is a multi-tenant B2G (business-to-government) platform that lets government agencies upload their own public safety data and exposes it through a unified REST API. The problem it addresses isn\'t new: public safety data exists, but it\'s fragmented and impossible to work with programmatically. In Canada, data is siloed across agencies. In Jamaica and across the Caribbean, many agencies have no structured data infrastructure at all. SafePoint solves this at the source - giving agencies the tools to submit data in whatever format they have, normalizing it into a consistent schema, and serving it through a single public API that developers can actually build on. Agency auth, the incident pipeline, and manual input ingestion are live. CSV ingestion with a template system is in progress.',
 
     audiences: [
       {
-        role: 'API Consumers',
+        role: 'Agency Staff',
         description:
-          'Developers building civic apps, safety dashboards, community tools, or content platforms who need structured access to Canadian public safety data without scraping and normalizing government sources themselves.',
+          'Government employees who log into a protected dashboard to submit safety data via manual input or CSV upload. Each agency operates in its own isolated data space - they can only view, update, or delete their own records.',
+      },
+      {
+        role: 'Developers',
+        description:
+          'Any developer who wants structured access to public safety data. They query the public REST API with filters like country, incident type, severity, and status - without having to scrape or normalize government sources themselves.',
+      },
+      {
+        role: 'Public',
+        description:
+          'Citizens who visit the public homepage to see live safety stats and situational awareness for their area.',
       },
     ],
 
     architectureOverview:
-      'Single-layer REST API: Express routes -> middleware (rate limiter, paginate) -> controllers -> MongoDB. Data is populated by a separate pipeline layer - cron-scheduled fetchers pull from government APIs, transform the response, and upsert into MongoDB. The API layer reads from the database and returns a standardized pagination envelope. These two responsibilities are intentionally decoupled: the pipeline writes data on a schedule, the API reads and serves it on demand.',
+      'Three-layer platform: Agency dashboard (React/TypeScript) -> REST API (Express) -> MongoDB. The API has two distinct sides: a protected ingestion layer where agency staff submit data, and a public read layer where developers query it. All data lives in a shared multi-tenant MongoDB database. Every document is tagged with orgID and country at the point of ingestion - enforced server-side from the verified JWT - so agencies can only access their own records. The public API reads from the same database with no auth required.',
 
     keyFeatures: [
       {
-        title: 'Weather Alerts Pipeline',
+        title: 'Multi-Tenant Organization Auth',
         description:
-          'Fetches real-time weather data from Environment Canada (api.weather.gc.ca) for all Ontario cities using a wildcard filter. Transforms raw API responses into a normalized Mongoose schema - including current conditions, active warnings, and forecast summaries - then upserts into MongoDB. An Ontario cities map is cached in memory after the first fetch to avoid redundant upstream calls.',
+          'Organizations register and agency staff log in with credentials scoped to their org. On login, a JWT is issued containing the orgID and country, stored in an httpOnly cookie. The verifyStaff middleware validates the JWT on every protected request and attaches the decoded org context to req.staff - controllers never re-verify. All writes tag documents with orgID and country from the token, not from the request body.',
       },
       {
-        title: 'Hourly Cron Scheduling + Startup Fetch',
+        title: 'Incident Schema with Duplicate Detection',
         description:
-          'node-cron runs the weather pipeline every hour (0 * * * *). An additional fetch fires on server startup so the database is never stale on a fresh boot or redeployment. The cron and startup logic share the same saveWeatherAlerts() function with a mode flag to distinguish context in logs.',
+          'The incident schema enforces full enum validation on type, severity, and status fields, with compound indexes for query performance. Before any incident is saved, it\'s checked against a time window of existing records for the same type and location. The window varies by incident type - a hurricane has a 72-hour window, a robbery has 2 hours. If a potential duplicate is detected, the API returns a 409 with the existing record. Agency staff can review and force-submit if it\'s a genuine new incident.',
       },
       {
-        title: 'bulkWrite Upsert for Deduplication',
+        title: 'Manual Input Pipeline',
         description:
-          'Each incoming record is matched by its sourceID. If it already exists in MongoDB, the document is updated in place; if not, it is inserted. This means the pipeline is fully idempotent - running it multiple times never creates duplicate records, and stale records are updated rather than re-inserted.',
+          'Full CRUD for incidents via manual agency dashboard input: POST to create, GET list with filtering and pagination, GET single by ID, PATCH to update, DELETE to remove. All write operations are protected by verifyStaff middleware and Joi validation. Agencies can filter their own data by country, type, severity, and status.',
       },
       {
-        title: 'Paginate Middleware',
+        title: 'Joi Validation Middleware',
         description:
-          'A shared paginate middleware normalizes limit, offset, and location query parameters before they reach any controller. Controllers read from req.limit, req.offset, and req.location rather than parsing req.query directly. Every response returns the same envelope: previous, next, total, category, data, and a source disclaimer.',
+          'Each content type has its own Joi validation middleware that runs before the controller. If the request body fails validation, the middleware returns a 400 with field-level error messages before any database operation is attempted. This keeps controllers clean and makes validation rules explicit and co-located with the route.',
       },
       {
-        title: 'Rate Limiting',
+        title: 'Pagination Middleware',
         description:
-          '100 requests per 15-minute window enforced globally via express-rate-limit. Applied once at the app level so all routes inherit it automatically.',
+          'A shared paginate middleware normalizes limit and offset query parameters before they reach any controller. Every response returns a consistent envelope: previous, next, total, filters, data, and a source disclaimer attributing the data to the submitting agency.',
+      },
+      {
+        title: 'CSV Ingestion Pipeline (in progress)',
+        description:
+          'Agencies upload CSV exports via Multer. On first upload, they map their column names to SafePoint\'s standard fields and define value mappings for enum fields (e.g. "KGN" -> Kingston). That template is saved and applied automatically to every future upload from the same agency. Unknown values that don\'t match a saved mapping are routed to an exception queue for the agency to resolve - resolutions are added to the template automatically.',
       },
     ],
 
     architectureDecisions: [
       {
-        decision: 'Endpoints organized by content type with category as a query parameter',
+        decision: 'B2G ingestion instead of scraping government sources',
         reason:
-          'The URL space stays flat and predictable (/v1/alerts, /v1/recalls, /v1/tips) while category-level filtering is handled via query string (?category=weather). This avoids deeply nested routes and makes it easy to add new categories under an existing content type without touching the routing layer.',
+          'Scraping normalizes data from the outside and breaks when source formats change. SafePoint solves the problem at the source: agencies own their submissions. This makes the data more reliable, gives agencies visibility into what\'s published, and works for regions like the Caribbean where there\'s nothing structured to scrape in the first place.',
       },
       {
-        decision: 'Decoupled pipeline layer from API layer',
+        decision: 'Shared multi-tenant database with server-enforced orgID tagging',
         reason:
-          'The cron fetchers and the API controllers have no runtime dependency on each other. The pipeline writes to MongoDB on a schedule; the API reads from MongoDB on demand. This means either layer can be changed, paused, or replaced independently - and if an upstream government API goes down, the API keeps serving the last successful dataset without any failure cascading to consumers.',
+          'All agencies share one MongoDB database. Every document is tagged with orgID and country from the JWT at write time. This means an agency cannot submit data under another org\'s ID even if they manipulate the request. Isolation is enforced at the server layer, not the database layer, which keeps the schema simple and queries fast.',
       },
       {
-        decision: 'bulkWrite upsert over insert-or-update per document',
+        decision: 'httpOnly cookie JWT for agency auth',
         reason:
-          'A single bulkWrite with updateOne operations processes the entire batch in one database round trip, regardless of set size. Doing individual upserts in a loop would issue one query per record - acceptable at small scale, but a design choice that would not survive a large dataset. bulkWrite is also atomic at the operation level, which is sufficient for this use case.',
+          'httpOnly cookies are invisible to JavaScript, so a successful XSS injection cannot steal the session token. The JWT carries orgID and country so the server never has to look up the org context - it\'s already trusted in the verified token.',
       },
       {
-        decision: 'In-memory caching for the Ontario cities map',
+        decision: 'Type-aware duplicate detection windows',
         reason:
-          'The cities reference list is fetched once from Environment Canada and stored in module scope. Subsequent pipeline runs skip the upstream call entirely. The data changes infrequently enough that a server restart is an acceptable cache invalidation strategy at this stage.',
+          'A fixed time window for duplicate detection would produce false positives for long-running incidents (hurricanes, wildfires) and miss real duplicates for short events (robberies, accidents). The duplicateWindows config maps each incident type to an appropriate window. The 409 response with the existing record lets agency staff make the judgment call rather than blocking the submission outright.',
+      },
+      {
+        decision: 'CSV template system per agency',
+        reason:
+          'Agencies have their own column naming conventions and enum values built up over years of internal reporting. Requiring them to reformat their exports to match SafePoint\'s schema creates adoption friction. The template system meets agencies where they are: map once, upload forever. Unknown values go to an exception queue rather than silently dropping rows.',
       },
     ],
 
     tradeoffs: [
       {
-        issue: 'Weather pipeline is Ontario-only',
+        issue: 'Only incidents are supported currently',
         detail:
-          'The current implementation filters for Ontario regions using the on* wildcard identifier. Other provinces require their own identifier patterns and are not yet handled.',
-        fix: 'Add a province configuration layer that maps province codes to their Environment Canada identifier patterns and runs fetches per province.',
-      },
-      {
-        issue: 'No API authentication',
-        detail:
-          'The API is publicly accessible with no key or token requirement. Rate limiting provides some abuse protection, but there is no way to attribute usage per consumer or revoke access.',
-        fix: 'Add API key issuance and a middleware that validates the key on each request. Store keys in MongoDB with usage metadata.',
-      },
-      {
-        issue: 'Remaining content types are stubs',
-        detail:
-          'Routes exist for tips, resources, and recalls, but their pipelines are not yet built. Requests to those endpoints return empty or placeholder responses.',
-        fix: 'Follow the weather alerts pattern to build out each pipeline: fetcher -> transformer -> schema -> upsert -> cron. The architecture is already in place.',
+          'The incident pipeline is the reference implementation. Other content types (fires, weather events, health alerts) are planned but their schemas and pipelines are not yet built.',
+        fix: 'Follow the incident pattern to build out each content type: schema -> Joi validation -> CRUD controllers -> route. The middleware chain is already in place.',
       },
     ],
 
     demonstrates: [
-      'REST API design with a flat, content-type-based URL structure',
-      'Scheduled data pipelines with node-cron (cron + startup fetch pattern)',
-      'MongoDB bulkWrite upsert for idempotent, deduplication-safe writes',
-      'Middleware chain design (rate limiter -> paginate -> controller)',
-      'Standardized pagination envelope across all endpoints',
-      'Decoupled pipeline and API layers for independent operation',
-      'In-memory caching for upstream reference data',
-      'Graceful error handling and null filtering across async pipeline stages',
+      'Multi-tenant REST API design with shared database and server-enforced data isolation',
+      'JWT auth via httpOnly cookies with org context embedded in the token',
+      'Schema-driven Joi validation middleware per content type',
+      'Duplicate detection with type-aware time windows and 409 conflict response',
+      'Full CRUD pipeline with verifyStaff middleware protecting write operations',
+      'Shared pagination middleware with consistent response envelope',
+      'CSV ingestion architecture with per-agency column mapping templates',
+      'B2G platform design - solving a data problem at the source rather than scraping',
     ],
 
     whyItMatters:
-      'Most API portfolio projects wrap an existing public API and call it a day. Safepoint inverts that - it is the API, built to solve a real gap: Canadian public safety data has no unified access layer. The technical decisions here reflect production thinking: idempotent writes, decoupled pipeline, rate limiting, and a middleware chain that keeps controllers clean. The weather pipeline is live and running. The architecture is designed so the remaining content types follow the same pattern without restructuring anything.',
+      'This project came from six years of working as a firefighter in Jamaica before transitioning to tech in Canada. On both sides I kept running into the same problem: public safety data exists but no one can use it programmatically. SafePoint is built around that real gap. The technical decisions - multi-tenancy, agency-side ingestion, duplicate detection, the CSV template system - all exist because the problem demanded them. The incident pipeline is live and the architecture is designed so every content type that follows uses the same pattern without restructuring anything.',
   },
 ]
 
