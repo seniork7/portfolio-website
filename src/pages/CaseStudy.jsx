@@ -125,7 +125,12 @@ export default function CaseStudy() {
             )}
             {project.githubUrl && (
               <Button variant="secondary" size="md" onClick={() => window.open(project.githubUrl, '_blank')}>
-                <Terminal size={14} />View Code
+                <Terminal size={14} />API Code
+              </Button>
+            )}
+            {project.frontendGithubUrl && (
+              <Button variant="secondary" size="md" onClick={() => window.open(project.frontendGithubUrl, '_blank')}>
+                <Terminal size={14} />Frontend Code
               </Button>
             )}
           </motion.div>
@@ -394,7 +399,12 @@ export default function CaseStudy() {
               )}
               {project.githubUrl && (
                 <Button variant="secondary" size="sm" className="w-full justify-center" onClick={() => window.open(project.githubUrl, '_blank')}>
-                  <Terminal size={13} />View Code
+                  <Terminal size={13} />API Code
+                </Button>
+              )}
+              {project.frontendGithubUrl && (
+                <Button variant="secondary" size="sm" className="w-full justify-center" onClick={() => window.open(project.frontendGithubUrl, '_blank')}>
+                  <Terminal size={13} />Frontend Code
                 </Button>
               )}
               {project.backendUrl && (

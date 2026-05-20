@@ -175,25 +175,26 @@ const projects = [
   },
   {
     id: 2,
-    slug: 'safepoint',
-    title: 'SafePoint',
+    slug: 'civron',
+    title: 'Civron',
     tagline: 'A multi-tenant B2G platform that gives government agencies the tools to upload, manage, and expose structured public safety data through a unified REST API.',
     problem:
       'Public safety data exists, but it\'s scattered and unusable. In Canada it\'s siloed across federal and provincial agencies with no unified access layer. In Jamaica and across the Caribbean the problem is worse - agencies have no structured data infrastructure at all. Reports are handwritten, filed in spreadsheets, or buried in PDFs. Developers who want to build on this data have to scrape and normalize it themselves, and often there\'s nothing to scrape.',
     solution:
-      'Built a B2G platform that solves the problem at the source. Instead of scraping data from the outside, SafePoint gives agencies the tools to upload their own data - CSV exports or manual dashboard entries - and normalizes everything into a consistent schema behind a single REST API. Agency auth, the incident pipeline, and manual input ingestion are live. CSV ingestion is in progress.',
+      'Built a B2G platform that solves the problem at the source. Instead of scraping data from the outside, Civron gives agencies the tools to upload their own data - CSV exports or manual dashboard entries - and normalizes everything into a consistent schema behind a single REST API. Agency auth, the incident pipeline, and manual input ingestion are live. CSV ingestion is in progress.',
     impact:
       'Demonstrates multi-tenant API design, JWT-based agency authentication, schema-driven validation, duplicate detection with type-aware time windows, and a clean separation between the ingestion layer and the public API - applied to a real public-sector data problem.',
-    techStack: ['Node.js', 'Express', 'MongoDB', 'Joi', 'JWT', 'Multer', 'csv-parse', 'node-cron', 'React', 'TypeScript', 'Tailwind CSS'],
+    techStack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'shadcn/ui', 'TanStack Query', 'React Hook Form', 'Zod', 'Node.js', 'Express', 'MongoDB', 'Joi', 'JWT', 'Multer', 'csv-parse', 'node-cron'],
     category: 'Full-Stack',
-    githubUrl: 'https://github.com/seniork7/safepoint',
-    backendUrl: 'https://api.safepoint.kevonsenior.com/api/v1',
+    liveUrl: 'https://www.civron.io/auth/login',
+    githubUrl: 'https://github.com/seniork7/civron-api',
+    frontendGithubUrl: 'https://github.com/seniork7/civron-frontend',
     imageUrl: '',
     featured: false,
 
     // Case study
     overview:
-      'SafePoint is a multi-tenant B2G (business-to-government) platform that lets government agencies upload their own public safety data and exposes it through a unified REST API. The problem it addresses isn\'t new: public safety data exists, but it\'s fragmented and impossible to work with programmatically. In Canada, data is siloed across agencies. In Jamaica and across the Caribbean, many agencies have no structured data infrastructure at all. SafePoint solves this at the source - giving agencies the tools to submit data in whatever format they have, normalizing it into a consistent schema, and serving it through a single public API that developers can actually build on. Agency auth, the incident pipeline, and manual input ingestion are live. CSV ingestion with a template system is in progress.',
+      'Civron is a multi-tenant B2G (business-to-government) platform that lets government agencies upload their own public safety data and exposes it through a unified REST API. The problem it addresses isn\'t new: public safety data exists, but it\'s fragmented and impossible to work with programmatically. In Canada, data is siloed across agencies. In Jamaica and across the Caribbean, many agencies have no structured data infrastructure at all. Civron solves this at the source - giving agencies the tools to submit data in whatever format they have, normalizing it into a consistent schema, and serving it through a single public API that developers can actually build on. Agency auth, the incident pipeline, and manual input ingestion are live. CSV ingestion with a template system is in progress.',
 
     audiences: [
       {
@@ -245,7 +246,7 @@ const projects = [
       {
         title: 'CSV Ingestion Pipeline (in progress)',
         description:
-          'Agencies upload CSV exports via Multer. On first upload, they map their column names to SafePoint\'s standard fields and define value mappings for enum fields (e.g. "KGN" -> Kingston). That template is saved and applied automatically to every future upload from the same agency. Unknown values that don\'t match a saved mapping are routed to an exception queue for the agency to resolve - resolutions are added to the template automatically.',
+          'Agencies upload CSV exports via Multer. On first upload, they map their column names to Civron\'s standard fields and define value mappings for enum fields (e.g. "KGN" -> Kingston). That template is saved and applied automatically to every future upload from the same agency. Unknown values that don\'t match a saved mapping are routed to an exception queue for the agency to resolve - resolutions are added to the template automatically.',
       },
     ],
 
@@ -253,7 +254,7 @@ const projects = [
       {
         decision: 'B2G ingestion instead of scraping government sources',
         reason:
-          'Scraping normalizes data from the outside and breaks when source formats change. SafePoint solves the problem at the source: agencies own their submissions. This makes the data more reliable, gives agencies visibility into what\'s published, and works for regions like the Caribbean where there\'s nothing structured to scrape in the first place.',
+          'Scraping normalizes data from the outside and breaks when source formats change. Civron solves the problem at the source: agencies own their submissions. This makes the data more reliable, gives agencies visibility into what\'s published, and works for regions like the Caribbean where there\'s nothing structured to scrape in the first place.',
       },
       {
         decision: 'Shared multi-tenant database with server-enforced orgID tagging',
@@ -273,7 +274,7 @@ const projects = [
       {
         decision: 'CSV template system per agency',
         reason:
-          'Agencies have their own column naming conventions and enum values built up over years of internal reporting. Requiring them to reformat their exports to match SafePoint\'s schema creates adoption friction. The template system meets agencies where they are: map once, upload forever. Unknown values go to an exception queue rather than silently dropping rows.',
+          'Agencies have their own column naming conventions and enum values built up over years of internal reporting. Requiring them to reformat their exports to match Civron\'s schema creates adoption friction. The template system meets agencies where they are: map once, upload forever. Unknown values go to an exception queue rather than silently dropping rows.',
       },
     ],
 
@@ -298,7 +299,7 @@ const projects = [
     ],
 
     whyItMatters:
-      'This project came from six years of working as a firefighter in Jamaica before transitioning to tech in Canada. On both sides I kept running into the same problem: public safety data exists but no one can use it programmatically. SafePoint is built around that real gap. The technical decisions - multi-tenancy, agency-side ingestion, duplicate detection, the CSV template system - all exist because the problem demanded them. The incident pipeline is live and the architecture is designed so every content type that follows uses the same pattern without restructuring anything.',
+      'This project came from six years of working as a firefighter in Jamaica before transitioning to tech in Canada. On both sides I kept running into the same problem: public safety data exists but no one can use it programmatically. Civron is built around that real gap. The technical decisions - multi-tenancy, agency-side ingestion, duplicate detection, the CSV template system - all exist because the problem demanded them. The incident pipeline is live and the architecture is designed so every content type that follows uses the same pattern without restructuring anything.',
   },
 ]
 

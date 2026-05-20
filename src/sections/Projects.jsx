@@ -10,7 +10,7 @@ const fadeUp = {
   visible: { opacity: 1, y: 0 },
 }
 
-function ProjectLinks({ liveUrl, githubUrl, slug, size = 'md' }) {
+function ProjectLinks({ liveUrl, githubUrl, frontendGithubUrl, slug, size = 'md' }) {
   return (
     <div className="flex flex-wrap gap-2">
       <Link to={`/case-study/${slug}`}>
@@ -35,7 +35,17 @@ function ProjectLinks({ liveUrl, githubUrl, slug, size = 'md' }) {
           onClick={() => window.open(githubUrl, '_blank')}
         >
           <Terminal size={14} />
-          Code
+          API
+        </Button>
+      )}
+      {frontendGithubUrl && (
+        <Button
+          variant="ghost"
+          size={size}
+          onClick={() => window.open(frontendGithubUrl, '_blank')}
+        >
+          <Terminal size={14} />
+          Frontend
         </Button>
       )}
     </div>
@@ -117,7 +127,7 @@ export default function Projects() {
                     <ObjTag key={tech} label={tech} />
                   ))}
                 </div>
-                <ProjectLinks liveUrl={featured.liveUrl} githubUrl={featured.githubUrl} slug={featured.slug} />
+                <ProjectLinks liveUrl={featured.liveUrl} githubUrl={featured.githubUrl} frontendGithubUrl={featured.frontendGithubUrl} slug={featured.slug} />
               </div>
 
               {/* Image */}
@@ -182,7 +192,7 @@ export default function Projects() {
                       <ObjTag key={tech} label={tech} />
                     ))}
                   </div>
-                  <ProjectLinks liveUrl={project.liveUrl} githubUrl={project.githubUrl} slug={project.slug} />
+                  <ProjectLinks liveUrl={project.liveUrl} githubUrl={project.githubUrl} frontendGithubUrl={project.frontendGithubUrl} slug={project.slug} />
                 </div>
 
                 {/* Image or placeholder */}
@@ -203,7 +213,7 @@ export default function Projects() {
                         className="w-full max-w-xs flex items-center gap-2 px-4 py-2 rounded-lg bg-zinc-100 dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700"
                       >
                         <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-400">GET</span>
-                        <span className="text-xs text-zinc-700 dark:text-zinc-300">/api/v1/alerts</span>
+                        <span className="text-xs text-zinc-700 dark:text-zinc-300">https://api.civron.io/v1/incidents</span>
                       </div>
 
                       {project.backendUrl && (
